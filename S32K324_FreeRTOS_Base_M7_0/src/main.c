@@ -33,8 +33,6 @@
 #include "Mcal.h"
 #include "OsIf.h"
 #include "Clock_Ip.h"
-#include "semphr.h"
-
 
 volatile int exit_code = 0;
 

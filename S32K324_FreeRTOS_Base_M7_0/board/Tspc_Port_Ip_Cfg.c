@@ -109,6 +109,9 @@ PortContainer_0_BOARD_InitPeripherals:
   - {pin_num: '32', peripheral: SIUL2, signal: 'gpio, 29', pin_signal: PTA29, direction: OUTPUT, InitValue: state_1}
   - {pin_num: '33', peripheral: SIUL2, signal: 'gpio, 30', pin_signal: PTA30, direction: OUTPUT, InitValue: state_1}
   - {pin_num: '39', peripheral: SIUL2, signal: 'gpio, 31', pin_signal: PTA31, direction: OUTPUT, InitValue: state_1}
+  - {pin_num: '73', peripheral: SIUL2, signal: 'gpio, 58', pin_signal: PTB26, direction: INPUT}
+  - {pin_num: '43', peripheral: SIUL2, signal: 'gpio, 51', pin_signal: PTB19, direction: INPUT}
+  - {pin_num: '44', peripheral: SIUL2, signal: 'gpio, 52', pin_signal: PTB20, direction: INPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */

@@ -31,6 +31,9 @@
                <pin_label pin_num="32" pin_signal="PTA29" label="LEDR" identifier="LEDR"/>
                <pin_label pin_num="33" pin_signal="PTA30" label="LEDG" identifier="LEDG"/>
                <pin_label pin_num="39" pin_signal="PTA31" label="LEDB" identifier="LEDB"/>
+               <pin_label pin_num="73" pin_signal="PTB26" label="KEY1" identifier="KEY1"/>
+               <pin_label pin_num="43" pin_signal="PTB19" label="KEY2" identifier="KEY2"/>
+               <pin_label pin_num="44" pin_signal="PTB20" label="KEY3" identifier="KEY3"/>
             </pin_labels>
             <external_user_signals>
                <properties/>
@@ -77,6 +80,21 @@
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
                         <pin_feature name="InitValue" value="state_1"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="SIUL2" signal="gpio, 58" pin_num="73" pin_signal="PTB26">
+                     <pin_features>
+                        <pin_feature name="direction" value="INPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="SIUL2" signal="gpio, 51" pin_num="43" pin_signal="PTB19">
+                     <pin_features>
+                        <pin_feature name="direction" value="INPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="SIUL2" signal="gpio, 52" pin_num="44" pin_signal="PTB20">
+                     <pin_features>
+                        <pin_feature name="direction" value="INPUT"/>
                      </pin_features>
                   </pin>
                </pins>
