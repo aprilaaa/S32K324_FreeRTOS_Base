@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.nxp.s32ds.debug.ide.s32debugger.group.launch.s32DebuggerGroupLaunchConfigurationType">
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.0.action" value="ACTION_WAIT_FOR_STOP_ON_BP"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.0.enabled" value="true"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.0.mode" value="debug"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.0.name" value="S32K324_FreeRTOS_Base_M7_0_Release_RAM_S32Debug"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.1.action" value="ACTION_NONE"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.1.enabled" value="true"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.1.mode" value="debug"/>
+<stringAttribute key="com.nxp.s32ds.debug.ide.s32debugger.groupLaunch.1.name" value="S32K324_FreeRTOS_Base_M7_1_Release_RAM_S32Debug"/>
+</launchConfiguration>
