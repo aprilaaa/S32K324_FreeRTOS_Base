@@ -29,7 +29,7 @@
 */
 
 /* Including necessary configuration files. */
-
+#include "OsTask.h"
 #include "OsIf.h"
 #include "Clock_Ip.h"
 #include "Siul2_Port_Ip_Cfg.h"
@@ -37,7 +37,6 @@
 #include "Siul2_Dio_Ip.h"
 
 volatile int exit_code = 0;
-volatile uint32 core1_cache_cnt;
 /* User includes */
 
 /*!
@@ -54,25 +53,15 @@ int main(void)
     Siul2_Port_Ip_Init(
     NUM_OF_CONFIGURED_PINS_PortContainer_0_BOARD_InitPeripherals, g_pin_mux_InitConfigArr_PortContainer_0_BOARD_InitPeripherals);
 
-    for(;;)
-    {
-    	uint32 cnt = 0;
-    	uint8 state = 0;
-    	while(1)
-    	{
-            cnt++;
-            if (cnt > 10000) {
-                Siul2_Dio_Ip_WritePin(LEDY_PORT, LEDY_PIN, state);
-                core1_cache_cnt++;
-                state = !state;
-                cnt = 0;
-            }
-    	}
-        if(exit_code != 0)
-        {
-            break;
-        }
-    }
+
+    xTaskCreate(vTask1ms_core1, "Task1ms_core1", configMINIMAL_STACK_SIZE, NULL, PRIO_1MS, &xHandle1ms_core1);
+    xTaskCreate(vTask10ms_core1, "Task10ms_core1", configMINIMAL_STACK_SIZE, NULL, PRIO_10MS, &xHandle10ms_core1);
+    xTaskCreate(vTask100ms_core1, "Task100ms_core1", configMINIMAL_STACK_SIZE, NULL, PRIO_100MS, &xHandle100ms_core1);
+    xTaskCreate(vTask1000ms_core1, "Task1000ms_core1", configMINIMAL_STACK_SIZE, NULL, PRIO_1000MS, &xHandle1000ms_core1);
+    vTaskStartScheduler();
+
+
+    for(;;){}
     return exit_code;
 }
 

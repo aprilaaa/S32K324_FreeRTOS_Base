@@ -19,13 +19,13 @@
 #define PRIO_100MS  ( tskIDLE_PRIORITY + 3 )
 #define PRIO_1000MS ( tskIDLE_PRIORITY + 2 )
 
-extern TaskHandle_t xHandle1ms, xHandle10ms, xHandle100ms, xHandle1000ms;
+extern TaskHandle_t xHandle1ms_core1, xHandle10ms_core1, xHandle100ms_core1, xHandle1000ms_core1;
 
 
-void vTask1ms(void *pvParameters);
-void vTask10ms(void *pvParameters);
-void vTask100ms(void *pvParameters);
-void vTask1000ms(void *pvParameters);
+void vTask1ms_core1(void *pvParameters);
+void vTask10ms_core1(void *pvParameters);
+void vTask100ms_core1(void *pvParameters);
+void vTask1000ms_core1(void *pvParameters);
 
 
 #endif /* OSTASK_OSTASK_H_ */
