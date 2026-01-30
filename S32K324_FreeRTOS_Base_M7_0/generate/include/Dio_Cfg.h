@@ -263,6 +263,27 @@ extern "C"{
 *
 */
 #define DioConf_DioChannel_DioChannel_LEDB  ((uint16)0x001fU)
+/* ---------- DioPort_1 ---------- */
+
+/**
+* @brief          Symbolic name for the port DioPort_1.
+*/
+#define DioConf_DioPort_DioPort_1  ((uint8)0x03U)
+/**
+* @brief          Symbolic name for the channel DioChannel_KEY1.
+*
+*/
+#define DioConf_DioChannel_DioChannel_KEY1  ((uint16)0x003aU)
+/**
+* @brief          Symbolic name for the channel DioChannel_KEY2.
+*
+*/
+#define DioConf_DioChannel_DioChannel_KEY2  ((uint16)0x0033U)
+/**
+* @brief          Symbolic name for the channel DioChannel_KEY3.
+*
+*/
+#define DioConf_DioChannel_DioChannel_KEY3  ((uint16)0x0034U)
 
 /*=================================================================================================
 *                                             ENUMS

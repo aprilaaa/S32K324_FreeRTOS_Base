@@ -423,6 +423,11 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="Tool" resourceId="Clocks" description="外围设备工具需要 Clocks 工具，但它已被禁用。" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data>true</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Siul2_Port_Ip_Cfg.c" update_enabled="true"/>
@@ -774,7 +779,7 @@
                                        <setting name="PortPinPus" value="false"/>
                                        <setting name="PortPinSafeMode" value="false"/>
                                        <setting name="PortPinDse" value="false"/>
-                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="true"/>
                                        <setting name="PortPinPke" value="false"/>
                                        <setting name="PortPinIfe" value="false"/>
                                        <setting name="PortPinDirectionChangeable" value="true"/>
@@ -796,7 +801,7 @@
                                        <setting name="PortPinPus" value="false"/>
                                        <setting name="PortPinSafeMode" value="false"/>
                                        <setting name="PortPinDse" value="false"/>
-                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="true"/>
                                        <setting name="PortPinPke" value="false"/>
                                        <setting name="PortPinIfe" value="false"/>
                                        <setting name="PortPinDirectionChangeable" value="true"/>
@@ -818,7 +823,7 @@
                                        <setting name="PortPinPus" value="false"/>
                                        <setting name="PortPinSafeMode" value="false"/>
                                        <setting name="PortPinDse" value="false"/>
-                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="true"/>
                                        <setting name="PortPinPke" value="false"/>
                                        <setting name="PortPinIfe" value="false"/>
                                        <setting name="PortPinDirectionChangeable" value="true"/>

@@ -878,3 +878,4 @@ Power_Ip_PowerModeType Power_Ip_MC_ME_GetPreviousMode(void)
 #endif
 
 /** @} */
+

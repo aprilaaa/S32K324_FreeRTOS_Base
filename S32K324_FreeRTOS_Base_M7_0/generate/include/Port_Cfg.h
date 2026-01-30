@@ -2703,16 +2703,19 @@ extern "C" {
 #define PortConf_PortPin_PortPin_LEDR 0
 #define PortConf_PortPin_PortPin_LEDG 1
 #define PortConf_PortPin_PortPin_LEDB 2
+#define PortConf_PortPin_PortPin_KEY1 3
+#define PortConf_PortPin_PortPin_KEY2 4
+#define PortConf_PortPin_PortPin_KEY3 5
 
 /**
 * @brief The maximum number of configured pins
 */
-#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)3)
+#define PORT_MAX_CONFIGURED_PADS_U16   ((uint16)6)
 
 /**
 * @brief Number of UnUsed pin array
 */
-#define PORT_MAX_UNUSED_PADS_U16    (211U)
+#define PORT_MAX_UNUSED_PADS_U16    (206U)
 /**
 * @brief Port driver Pre-Compile configuration switch
 */
