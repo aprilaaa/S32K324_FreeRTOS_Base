@@ -33,6 +33,8 @@
 #include "Mcal.h"
 #include "OsIf.h"
 #include "Clock_Ip.h"
+#include "Port.h"
+#include "Mcu.h"
 
 volatile int exit_code = 0;
 
@@ -44,23 +46,23 @@ volatile int exit_code = 0;
 */
 int main(void)
 {
-    /* Write your code here */
-    Clock_Ip_StatusType Status_Init_Clock = CLOCK_IP_ERROR;
-    Status_Init_Clock = Clock_Ip_Init(Clock_Ip_aClockConfig);
 
-    if (Status_Init_Clock != CLOCK_IP_SUCCESS)
-    {
-        while(1); /* Error during initialization. */
-    }
+    /* Initialize the Mcu driver */
+	#if (MCU_PRECOMPILE_SUPPORT == STD_ON)
+		Mcu_Init(NULL_PTR);
+	#elif (MCU_PRECOMPILE_SUPPORT == STD_OFF)
+		Mcu_Init(&Mcu_Config);
+	#endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
+
+    /* Initialize the clock tree and apply PLL as system clock */
+    Mcu_InitClock(McuClockSettingConfig_0);
+
+    /* Apply a mode configuration */
+    Mcu_SetMode(McuModeSettingConf_0);
 
     /* Initialize all pins using the Port driver */
-    Siul2_Port_Ip_PortStatusType Status_Init_Port = SIUL2_PORT_ERROR;
-    Status_Init_Port = Siul2_Port_Ip_Init(NUM_OF_CONFIGURED_PINS_PortContainer_0_BOARD_InitPeripherals, g_pin_mux_InitConfigArr_PortContainer_0_BOARD_InitPeripherals);
+    Port_Init(NULL_PTR);
 
-    if(Status_Init_Port != SIUL2_PORT_SUCCESS)
-    {
-        while(1); /* Error during initialization. */
-    }
 
     /* Initialize OsIf timer for FreeRTOS SysTick */
     OsIf_Init(NULL);

@@ -9,10 +9,8 @@
 #define OSTASK_OSTASK_H_
 
 #include "FreeRTOS.h"
-#include "Siul2_Dio_Ip.h"
-#include "Siul2_Port_Ip_Cfg.h"
-#include "Siul2_Port_Ip.h"
 #include "task.h"
+#include "Dio.h"
 
 #define PRIO_1MS    ( tskIDLE_PRIORITY + 5 )
 #define PRIO_10MS   ( tskIDLE_PRIORITY + 4 )

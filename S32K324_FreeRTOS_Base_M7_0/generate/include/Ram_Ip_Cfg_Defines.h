@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : DMA,CACHE,TRGMUX,LCU,EMIOS,FLEXIO
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -11,7 +11,6 @@
 *   Build Version        : S32K3_RTD_5_0_0_D2408_ASR_REL_4_7_REV_0000_20241002
 *
 *   Copyright 2020 - 2024 NXP
-*   
 *
 *   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
 *   used strictly in accordance with the applicable license terms.  By expressly 
@@ -22,26 +21,24 @@
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
-/* Prevention from multiple including the same header */
-#ifndef CACHE_IP_CFG_DEVICE_REGISTERS_H_
-#define CACHE_IP_CFG_DEVICE_REGISTERS_H_
+#ifndef RAM_IP_CFG_DEFINES_H
+#define RAM_IP_CFG_DEFINES_H
 
 /**
-*   @file    Cache_Ip_Cfg_DeviceRegisters.h
+*   @file       Ram_Ip_Cfg_Defines.h
+*   @version    5.0.0
 *
-*   @version 5.0.0
+*   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
+*   @details Code template for Post-Build(PB) configuration file generation.
 *
-*   @brief   AUTOSAR Mcl - Cache Ip Cfg Device Registers header file.
-*   @details
-*
-*   @addtogroup CACHE_IP_DRIVER CACHE IP Driver
+*   @addtogroup RAM_DRIVER_CONFIGURATION Ram Ip Driver
 *   @{
 */
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C"{
 #endif
+
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -49,39 +46,48 @@ extern "C"
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Mcal.h"
-
-#include "S32K324_SCB.h"
+#include "S32K324_MC_ME.h"
+#include "S32K324_STCU.h"
 /*==================================================================================================
                                SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CACHE_IP_CFG_DEVICEREGISTERS_VENDOR_ID                       43
-#define CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MAJOR_VERSION        4
-#define CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MINOR_VERSION        7
-#define CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_REVISION_VERSION     0
-#define CACHE_IP_CFG_DEVICEREGISTERS_SW_MAJOR_VERSION                5
-#define CACHE_IP_CFG_DEVICEREGISTERS_SW_MINOR_VERSION                0
-#define CACHE_IP_CFG_DEVICEREGISTERS_SW_PATCH_VERSION                0
+#define RAM_IP_CFG_DEFINES_VENDOR_ID                       43
+#define RAM_IP_CFG_DEFINES_AR_RELEASE_MAJOR_VERSION        4
+#define RAM_IP_CFG_DEFINES_AR_RELEASE_MINOR_VERSION        7
+#define RAM_IP_CFG_DEFINES_AR_RELEASE_REVISION_VERSION     0
+#define RAM_IP_CFG_DEFINES_SW_MAJOR_VERSION                5
+#define RAM_IP_CFG_DEFINES_SW_MINOR_VERSION                0
+#define RAM_IP_CFG_DEFINES_SW_PATCH_VERSION                0
 
 /*==================================================================================================
-                                      FILE VERSION CHECKS
+*                                     FILE VERSION CHECKS
 ==================================================================================================*/
-#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-/* Check if header file and Mcal header file are of the same Autosar version */
-#if ((CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MAJOR_VERSION != MCAL_AR_RELEASE_MAJOR_VERSION) || \
-     (CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MINOR_VERSION != MCAL_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Cache_Ip_Cfg_DeviceRegisters.h and Mcal.h are different"
-#endif
-#endif
+
+/*==================================================================================================
+                                           DEFINES AND MACROS
+==================================================================================================*/
+
+/**
+* @brief            Pre-processor switch to enable/disable the API Ram_Ip_GetRamState.
+*/
+
+#define RAM_IP_GET_RAM_STATE_API        (STD_OFF)
+/*==================================================================================================
+                                             ENUMS
+==================================================================================================*/
+
+
+/*==================================================================================================
+                                 STRUCTURES AND OTHER TYPEDEFS
+==================================================================================================*/
+
+
 
 #ifdef __cplusplus
 }
 #endif
+
 /** @} */
+#endif /* #ifndef RAM_IP_CFG_DEFINES_H */
 
-#endif  /* #ifndef CACHE_IP_CFG_DEVICE_REGISTERS_H_ */
-
-/*==================================================================================================
- *                                        END OF FILE
-==================================================================================================*/
 

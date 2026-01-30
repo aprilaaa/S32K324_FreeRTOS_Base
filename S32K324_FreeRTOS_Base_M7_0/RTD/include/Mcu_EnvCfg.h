@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : DMA,CACHE,TRGMUX,LCU,EMIOS,FLEXIO
+*   Peripheral           : 
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -11,7 +11,6 @@
 *   Build Version        : S32K3_RTD_5_0_0_D2408_ASR_REL_4_7_REV_0000_20241002
 *
 *   Copyright 2020 - 2024 NXP
-*   
 *
 *   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be 
 *   used strictly in accordance with the applicable license terms.  By expressly 
@@ -22,19 +21,17 @@
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
-/* Prevention from multiple including the same header */
-#ifndef CACHE_IP_TYPES_H_
-#define CACHE_IP_TYPES_H_
+#ifndef MCU_ENVCFG_H
+#define MCU_ENVCFG_H
 
 /**
-*   @file    Cache_Ip_Types.h
+*   @file    Mcu_EnvCfg.h
+*   @version    5.0.0
 *
-*   @version 5.0.0
-*
-*   @brief   AUTOSAR Mcl - Cache Ip driver header file.
-*   @details
-*
-*   @addtogroup CACHE_IP_DRIVER CACHE IP Driver
+*   @brief      AUTOSAR Mcu - Driver external interface.
+*   @details    Contains all the public functions and data types that are used by the higher layer.
+
+*   @addtogroup MCU_DRIVER Mcu Driver
 *   @{
 */
 
@@ -42,86 +39,85 @@
 extern "C"{
 #endif
 
+
+
+
 /*==================================================================================================
 *                                          INCLUDE FILES
-*  1) system and project includes
-*  2) needed interfaces from external units
-*  3) internal and external interfaces from this unit
+* 1) system and project includes
+* 2) needed interfaces from external units
+* 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Std_Types.h"
-#include "Cache_Ip_Cfg_DeviceRegisters.h"
 
 /*==================================================================================================
-*                              SOURCE FILE VERSION INFORMATION
+*                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define CACHE_IP_TYPES_VENDOR_ID                       43
-#define CACHE_IP_TYPES_AR_RELEASE_MAJOR_VERSION        4
-#define CACHE_IP_TYPES_AR_RELEASE_MINOR_VERSION        7
-#define CACHE_IP_TYPES_AR_RELEASE_REVISION_VERSION     0
-#define CACHE_IP_TYPES_SW_MAJOR_VERSION                5
-#define CACHE_IP_TYPES_SW_MINOR_VERSION                0
-#define CACHE_IP_TYPES_SW_PATCH_VERSION                0
+
+#define MCU_ENVCFG_VENDOR_ID                       43
+#define MCU_ENVCFG_AR_RELEASE_MAJOR_VERSION        4
+#define MCU_ENVCFG_AR_RELEASE_MINOR_VERSION        7
+#define MCU_ENVCFG_AR_RELEASE_REVISION_VERSION     0
+#define MCU_ENVCFG_SW_MAJOR_VERSION                5
+#define MCU_ENVCFG_SW_MINOR_VERSION                0
+#define MCU_ENVCFG_SW_PATCH_VERSION                0
 
 /*==================================================================================================
-                                      FILE VERSION CHECKS
+*                               SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-/* Check if header file and Std_Types header file are of the same Autosar version */
-#if ((CACHE_IP_TYPES_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
-     (CACHE_IP_TYPES_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
-    #error "AutoSar Version Numbers of Dma_Ip_Cfg_Defines.h and Std_Types.h are different"
-#endif
-#endif
 
-/* Check if header file and Cache_Ip_DeviceRegisters.h file are of the same vendor */
-#if (CACHE_IP_TYPES_VENDOR_ID != CACHE_IP_CFG_DEVICEREGISTERS_VENDOR_ID)
-    #error "Cache_Ip_Types.h and Cache_Ip_DeviceRegisters.h have different vendor ids"
-#endif
-
-/* Check if header file and Cache_Ip_DeviceRegisters.h file are of the same Autosar version */
-#if ((CACHE_IP_TYPES_AR_RELEASE_MAJOR_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MAJOR_VERSION) || \
-     (CACHE_IP_TYPES_AR_RELEASE_MINOR_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_MINOR_VERSION) || \
-     (CACHE_IP_TYPES_AR_RELEASE_REVISION_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_AR_RELEASE_REVISION_VERSION) \
-    )
-    #error "AutoSar Version Numbers of Cache_Ip_Types.h and Cache_Ip_DeviceRegisters.h are different"
-#endif
-
-/* Check if header file and Cache_Ip_DeviceRegisters.h file are of the same Software version */
-#if ((CACHE_IP_TYPES_SW_MAJOR_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_SW_MAJOR_VERSION) || \
-     (CACHE_IP_TYPES_SW_MINOR_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_SW_MINOR_VERSION) || \
-     (CACHE_IP_TYPES_SW_PATCH_VERSION != CACHE_IP_CFG_DEVICEREGISTERS_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of Cache_Ip_Types.h and Cache_Ip_DeviceRegisters.h are different"
-#endif
 
 /*==================================================================================================
-*                                            CONSTANTS
+*                                      FILE VERSION CHECKS
 ==================================================================================================*/
+
+
+/*==================================================================================================
+*                                           CONSTANTS
+==================================================================================================*/
+
 
 /*==================================================================================================
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
+#define MCU_PARAM_CHECK                 (MCU_DEV_ERROR_DETECT)
+
+#if (MCU_PARAM_CHECK != MCU_DEV_ERROR_DETECT)
+    #error "Cannot disable parameter check (MCU_PARAM_CHECK) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
+#endif
+
+/* high level defines */
+#define MCU_VALIDATE_GLOBAL_CALL        (MCU_DEV_ERROR_DETECT)
+
+#if (MCU_VALIDATE_GLOBAL_CALL != MCU_DEV_ERROR_DETECT)
+    #error "Cannot disable API validation (MCU_VALIDATE_GLOBAL_CALL) when development error detection is enabled (MCU_DEV_ERROR_DETECT) as per [SWS_BSW_00042]"
+#endif
+
+
+#define MCU_PARAM_UNUSED(param)         ((void)((param)))
 
 /*==================================================================================================
-*                                              ENUMS
+*                                             ENUMS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                  STRUCTURES AND OTHER TYPEDEFS
+*                                 STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                  GLOBAL VARIABLE DECLARATIONS
+*                                 GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
 
+
 /*==================================================================================================
-*                                       FUNCTION PROTOTYPES
+*                                     FUNCTION PROTOTYPES
 ==================================================================================================*/
+
+
 
 #ifdef __cplusplus
 }
 #endif
 
 /** @} */
+#endif /* MCU_ENVCFG_H */
 
-#endif  /* #ifndef CACHE_IP_TYPES_H_ */

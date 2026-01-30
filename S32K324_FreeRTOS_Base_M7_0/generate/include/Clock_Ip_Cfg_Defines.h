@@ -145,19 +145,6 @@ extern "C"{
 #define CLOCK_IP_SPECIFIC_PERIPH_COUNT       (0U)
 
 /**
-* @brief            Number of clock configurations 0
-*/
-#define CLOCK_IP_CONFIGURED_IRCOSCS_0_NO       (3U)
-#define CLOCK_IP_CONFIGURED_XOSCS_0_NO       (2U)
-#define CLOCK_IP_CONFIGURED_PLLS_0_NO       (1U)
-#define CLOCK_IP_CONFIGURED_SELECTORS_0_NO       (13U)
-#define CLOCK_IP_CONFIGURED_DIVIDERS_0_NO       (21U)
-#define CLOCK_IP_CONFIGURED_DIVIDER_TRIGGERS_0_NO       (1U)
-#define CLOCK_IP_CONFIGURED_EXT_CLKS_0_NO       (2U)
-#define CLOCK_IP_CONFIGURED_GATES_0_NO       (104U)
-#define CLOCK_IP_CONFIGURED_CMUS_0_NO       (3U)
-
-/**
 * @brief            Supported power mode.
 */
 #define CLOCK_IP_HAS_RUN_MODE                 0U
