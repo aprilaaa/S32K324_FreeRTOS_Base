@@ -11,6 +11,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Dio.h"
+#include "Adc.h"
 
 #define PRIO_1MS    ( tskIDLE_PRIORITY + 5 )
 #define PRIO_10MS   ( tskIDLE_PRIORITY + 4 )

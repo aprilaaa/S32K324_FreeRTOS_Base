@@ -36,8 +36,20 @@
 #include "Port.h"
 #include "Mcu.h"
 
+
 volatile int exit_code = 0;
 
+#define NUM_RESULTS         (3u)
+#define RESULT_BUFF_VAL     (0xaaaa)
+#define ADC_RESULT_BUFF_VAL (0xbbbb)
+Adc_ValueGroupType    ResultBuffer[NUM_RESULTS]    =  {RESULT_BUFF_VAL, RESULT_BUFF_VAL, RESULT_BUFF_VAL};
+Adc_ValueGroupType    AdcReadGroupResult[NUM_RESULTS] =  {ADC_RESULT_BUFF_VAL, ADC_RESULT_BUFF_VAL, ADC_RESULT_BUFF_VAL};
+volatile uint8 VarNotification_0 = 0u;
+
+void Notification_0(void)
+{
+    VarNotification_0++;
+}
 /*!
   \brief The main function for the project.
   \details The startup initialization sequence is the following:
@@ -63,9 +75,20 @@ int main(void)
     /* Initialize all pins using the Port driver */
     Port_Init(NULL_PTR);
 
+	#if (ADC_PRECOMPILE_SUPPORT == STD_ON)
+		Adc_Init(NULL_PTR);
+	#else
+		Adc_Init(&Adc_Config_VS_0);
+	#endif /* (ADC_PRECOMPILE_SUPPORT == STD_ON) */
+
+
 
     /* Initialize OsIf timer for FreeRTOS SysTick */
     OsIf_Init(NULL);
+
+    Adc_SetupResultBuffer(AdcGroupSoftwareOneShot, ResultBuffer);
+    Adc_EnableGroupNotification(AdcGroupSoftwareOneShot);
+
 
     xTaskCreate(vTask1ms, "Task1ms", configMINIMAL_STACK_SIZE, NULL, PRIO_1MS, &xHandle1ms);
     xTaskCreate(vTask10ms, "Task10ms", configMINIMAL_STACK_SIZE, NULL, PRIO_10MS, &xHandle10ms);

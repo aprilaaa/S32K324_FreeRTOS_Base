@@ -12,6 +12,8 @@
 
 TaskHandle_t xHandle1ms, xHandle10ms, xHandle100ms, xHandle1000ms;
 uint32 vTask1ms_cnt, vTask10ms_cnt, vTask100ms_cnt, vTask1000ms_cnt;
+extern volatile uint8 VarNotification_0;
+extern Adc_ValueGroupType AdcReadGroupResult[];
 
 /* --- 1ms task --- */
 void vTask1ms(void *pvParameters)
@@ -87,6 +89,13 @@ void vTask1000ms(void *pvParameters)
     {
     	vTask1000ms_cnt++;
     	Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDB);
+
+    	Adc_StartGroupConversion(AdcGroupSoftwareOneShot);
+        /* Check if notification is called */
+        while (VarNotification_0 == 0u)
+        {}
+    	Adc_ReadGroup(AdcGroupSoftwareOneShot, AdcReadGroupResult);
+
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
     }
 }
