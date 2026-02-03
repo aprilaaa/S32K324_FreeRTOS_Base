@@ -194,7 +194,7 @@ static const Power_Ip_MC_ME_CofbConfigType Power_Ip_MC_ME_aPartition0CofbConfigP
         /* The clock enable register value of the COFB set. */
         MC_ME_PRTN0_COFB1_CLKEN
         (
-            ((uint32)0x00000000U) | MC_ME_PRTN0_COFB1_CLKEN_REQ44_MASK
+            ((uint32)0x00000000U) | MC_ME_PRTN0_COFB1_CLKEN_REQ41_MASK | MC_ME_PRTN0_COFB1_CLKEN_REQ44_MASK
         ),
 
         /* Mask containing the COFB blocks to be updated. */
