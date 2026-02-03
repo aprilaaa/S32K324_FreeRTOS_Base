@@ -79,7 +79,7 @@ void vTask100ms(void *pvParameters)
      	Adc_StartGroupConversion(AdcGroupSoftwareOneShot);
         while (VarNotification_0 == 0u){}
 		VarNotification_0 = 0;
-     	Adc_ReadGroup(AdcGroupSoftwareOneShot, AdcReadGroupResult);
+     	Adc_ReadGroup(AdcGroupSoftwareOneShot, &AdcReadGroupResult);
 
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
     }
