@@ -104,9 +104,6 @@ int main(void)
 
 	Can_43_FLEXCAN_SetControllerMode(Can_43_FLEXCANConf_CanController_CanController_0, CAN_CS_STARTED);
 
-    /* Initialize OsIf timer for FreeRTOS SysTick */
-    OsIf_Init(NULL);
-
     Adc_SetupResultBuffer(AdcGroupSoftwareOneShot, &AdcResult);
     Adc_EnableGroupNotification(AdcGroupSoftwareOneShot);
 

@@ -48,7 +48,6 @@ volatile int exit_code = 0;
 int main(void)
 {
     /* Write your code here */
-	OsIf_Init(NULL_PTR);
     Clock_Ip_Init(&Clock_Ip_aClockConfig[0]);
     Siul2_Port_Ip_Init(
     NUM_OF_CONFIGURED_PINS_PortContainer_0_BOARD_InitPeripherals, g_pin_mux_InitConfigArr_PortContainer_0_BOARD_InitPeripherals);
