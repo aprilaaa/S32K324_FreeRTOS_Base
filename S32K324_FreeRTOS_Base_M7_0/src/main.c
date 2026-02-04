@@ -36,6 +36,8 @@
 #include "Port.h"
 #include "Mcu.h"
 #include "Platform.h"
+#include "Can_43_FLEXCAN.h"
+#include "CanIf.h"
 
 volatile int exit_code = 0;
 
@@ -79,7 +81,7 @@ int main(void)
     Platform_InstallIrqHandler(ADC1_IRQn, Adc_Sar_1_Isr, NULL_PTR);
     Platform_SetIrq(ADC1_IRQn, TRUE);
 
-
+    /* Initialize ADC Driver */
 	#if (ADC_PRECOMPILE_SUPPORT == STD_ON)
 		Adc_Init(NULL_PTR);
 	#else
@@ -87,6 +89,20 @@ int main(void)
 	#endif /* (ADC_PRECOMPILE_SUPPORT == STD_ON) */
 
 
+    /* Initilize Can driver */
+	#if (CAN_43_FLEXCAN_PRECOMPILE_SUPPORT == STD_ON)
+		Can_43_FLEXCAN_Init(NULL_PTR);
+	#else
+		Can_43_FLEXCAN_Init(&Can_43_FLEXCAN_Config);
+	#endif
+
+	#if (STD_ON == CANIF_PRECOMPILE_SUPPORT)
+	CanIf_Init(NULL_PTR);
+	#else
+	CanIf_Init(&CanIf_Config);
+	#endif
+
+	Can_43_FLEXCAN_SetControllerMode(Can_43_FLEXCANConf_CanController_CanController_0, CAN_CS_STARTED);
 
     /* Initialize OsIf timer for FreeRTOS SysTick */
     OsIf_Init(NULL);

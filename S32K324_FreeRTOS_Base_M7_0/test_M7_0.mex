@@ -93,6 +93,8 @@
                      </pin_features>
                   </pin>
                   <pin peripheral="ADC1" signal="adc1_s10" pin_num="160" pin_signal="PTA11"/>
+                  <pin peripheral="CAN0" signal="can0_rx" pin_num="102" pin_signal="PTA6"/>
+                  <pin peripheral="CAN0" signal="can0_tx" pin_num="100" pin_signal="PTA7"/>
                </pins>
             </function>
          </functions_list>
@@ -444,6 +446,36 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.Can_43_FLEXCAN" description="工具链/IDE工程中未找到Can_43_FLEXCAN。工程不会被编译！" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.Can_43_FLEXCAN" description="工具链/IDE工程不支持Can_43_FLEXCAN版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">0.1.0</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.CanIf" description="工具链/IDE工程中未找到CanIf。工程不会被编译！" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.CanIf" description="工具链/IDE工程不支持CanIf版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ecum" description="工具链/IDE工程中未找到EcuM。工程不会被编译！" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.ecum" description="工具链/IDE工程不支持EcuM版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
+               </feature>
+            </dependency>
             <dependency resourceType="Tool" resourceId="Clocks" description="外围设备工具需要 Clocks 工具，但它已被禁用。" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data>true</data>
@@ -467,11 +499,22 @@
             <file path="generate/include/Bctu_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Bctu_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/Bctu_Ip_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/CanIf_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/CanIf_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Can_43_FLEXCAN_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Can_43_FLEXCAN_Externals.h" update_enabled="true"/>
+            <file path="generate/include/Can_43_FLEXCAN_Ipw_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Can_43_FLEXCAN_Ipw_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Can_43_FLEXCAN_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Clock_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Clock_Ip_Cfg_Defines.h" update_enabled="true"/>
             <file path="generate/include/Clock_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/DeviceDefinition.h" update_enabled="true"/>
             <file path="generate/include/Dio_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/EcuM_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/FlexCAN_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/FlexCAN_Ip_CfgDefines.h" update_enabled="true"/>
+            <file path="generate/include/FlexCAN_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/FreeRTOSConfig.h" update_enabled="false"/>
             <file path="generate/include/Igf_Port_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Igf_Port_Ip_PBcfg.h" update_enabled="true"/>
@@ -513,9 +556,14 @@
             <file path="generate/src/Adc_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Adc_Sar_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Bctu_Ip_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/CanIf_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/CanIf_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Can_43_FLEXCAN_Ipw_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Can_43_FLEXCAN_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Clock_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Clock_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Dio_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/FlexCAN_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Igf_Port_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Mcu_Cfg.c" update_enabled="true"/>
@@ -984,6 +1032,50 @@
                                        <array name="IGFSettings"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
+                                    <struct name="7">
+                                       <setting name="Name" value="PortPin_7"/>
+                                       <setting name="PortPinPue" value="false"/>
+                                       <setting name="PortPinPus" value="false"/>
+                                       <setting name="PortPinSafeMode" value="false"/>
+                                       <setting name="PortPinDse" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinPke" value="false"/>
+                                       <setting name="PortPinIfe" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinInvertControl" value="false"/>
+                                       <setting name="PortPinSiul2Instance" value="SIUL2_0"/>
+                                       <setting name="PortPinId" value="8"/>
+                                       <setting name="PortPinPcr" value="7"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="OBEGroupSelect" value="NO_OBE_GROUP"/>
+                                       <setting name="MscrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <setting name="ImcrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <array name="IGFSettings"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="8">
+                                       <setting name="Name" value="PortPin_8"/>
+                                       <setting name="PortPinPue" value="false"/>
+                                       <setting name="PortPinPus" value="false"/>
+                                       <setting name="PortPinSafeMode" value="false"/>
+                                       <setting name="PortPinDse" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinPke" value="false"/>
+                                       <setting name="PortPinIfe" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinInvertControl" value="false"/>
+                                       <setting name="PortPinSiul2Instance" value="SIUL2_0"/>
+                                       <setting name="PortPinId" value="9"/>
+                                       <setting name="PortPinPcr" value="6"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="OBEGroupSelect" value="NO_OBE_GROUP"/>
+                                       <setting name="MscrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <setting name="ImcrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <array name="IGFSettings"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -1420,6 +1512,10 @@
                                        <setting name="Name" value="McuClockReferencePoint_0"/>
                                        <setting name="McuClockFrequencySelect" value="CORE_CLK"/>
                                     </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="McuClockReferencePoint_CAN0"/>
+                                       <setting name="McuClockFrequencySelect" value="FLEXCAN_PE_CLK0_2"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -1748,37 +1844,37 @@
                                           <setting name="Name" value="McuPeripheral_45"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_0"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ65"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="46">
                                           <setting name="Name" value="McuPeripheral_46"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_1"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ66"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="47">
                                           <setting name="Name" value="McuPeripheral_47"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_2"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ67"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="48">
                                           <setting name="Name" value="McuPeripheral_48"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_3"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ68"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="49">
                                           <setting name="Name" value="McuPeripheral_49"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_4"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ69"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="50">
                                           <setting name="Name" value="McuPeripheral_50"/>
                                           <setting name="McuPeripheralName" value="FlexCAN_5"/>
                                           <setting name="McuModeEntrySlot" value="PRTN1_COFB2_REQ70"/>
-                                          <setting name="McuPeripheralClockEnable" value="false"/>
+                                          <setting name="McuPeripheralClockEnable" value="true"/>
                                        </struct>
                                        <struct name="51">
                                           <setting name="Name" value="McuPeripheral_51"/>
@@ -2462,6 +2558,235 @@
                            <array name="IntmChannel"/>
                         </struct>
                         <array name="IntCtrlConfig"/>
+                     </config_set>
+                  </instance>
+                  <instance name="Can_43_FLEXCAN" uuid="76642576-e65f-4a15-9031-adc3c192e446" type="Can_43_FLEXCAN" type_id="Can_43_FLEXCAN" mode="autosar" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Can">
+                        <setting name="Name" value="Can"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="true"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-POST-BUILD"/>
+                        </struct>
+                        <struct name="CanGeneral">
+                           <setting name="Name" value="CanGeneral"/>
+                           <setting name="CanDevErrorDetect" value="true"/>
+                           <setting name="CanEnableUserModeSupport" value="false"/>
+                           <setting name="CanMultiPartitionSupport" value="false"/>
+                           <setting name="CanEnableSecurityEventReporting" value="false"/>
+                           <setting name="CanVersionInfoApi" value="false"/>
+                           <setting name="CanIndex" value="0"/>
+                           <array name="CanMainFunctionBusoffPeriod"/>
+                           <array name="CanMainFunctionWakeupPeriod"/>
+                           <setting name="CanMainFunctionModePeriod" value="0.001"/>
+                           <setting name="CanMultiplexedTransmission" value="false"/>
+                           <setting name="CanTimeoutMethod" value="OSIF_COUNTER_DUMMY"/>
+                           <setting name="CanTimeoutDuration" value="0.01"/>
+                           <array name="CanLPduReceiveCalloutFunction"/>
+                           <array name="CanEcucPartitionRef"/>
+                           <array name="CanOsCounterRef"/>
+                           <array name="CanSupportTTCANRef"/>
+                           <setting name="CanMBCountExtensionSupport" value="false"/>
+                           <array name="CanApiEnableMbAbort"/>
+                           <array name="CanSetBaudrateApi"/>
+                           <setting name="CanEnableDualClockMode" value="false"/>
+                           <array name="CanListenOnlyModeApi"/>
+                           <setting name="CanGlobalTimeSupport" value="false"/>
+                           <array name="CanTimeStamp"/>
+                           <array name="CanMainFunctionRWPeriods">
+                              <struct name="0">
+                                 <setting name="Name" value="CanMainFunctionRWPeriods_0"/>
+                                 <setting name="CanMainFunctionPeriod" value="0.001"/>
+                              </struct>
+                           </array>
+                        </struct>
+                        <struct name="CanConfigSet">
+                           <setting name="Name" value="CanConfigSet"/>
+                           <array name="CanController">
+                              <struct name="0">
+                                 <setting name="Name" value="CanController_0"/>
+                                 <setting name="CanHwChannel" value="FLEXCAN_0"/>
+                                 <setting name="CanControllerActivation" value="true"/>
+                                 <setting name="CanControllerBaseAddress" value="0"/>
+                                 <setting name="CanControllerId" value="0"/>
+                                 <setting name="CanRxProcessing" value="POLLING"/>
+                                 <setting name="CanTxProcessing" value="POLLING"/>
+                                 <setting name="CanBusoffProcessing" value="POLLING"/>
+                                 <setting name="CanWakeupFunctionalityAPI" value="false"/>
+                                 <setting name="CanWakeupProcessing" value="INTERRUPT"/>
+                                 <setting name="CanWakeupSupport" value="false"/>
+                                 <setting name="CanLoopBackMode" value="false"/>
+                                 <setting name="CanAutoBusOffRecovery" value="false"/>
+                                 <setting name="CanTrippleSamplingEnable" value="false"/>
+                                 <setting name="CanControllerPrExcEn" value="false"/>
+                                 <setting name="CanControllerEdgeFilter" value="false"/>
+                                 <setting name="CanControllerFdISO" value="true"/>
+                                 <setting name="CanControllerDefaultBaudrate" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0/CanControllerBaudrateConfig_0"/>
+                                 <array name="CanControllerEcucPartitionRef"/>
+                                 <setting name="CanCpuClockRef" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_CAN0"/>
+                                 <setting name="CanCpuClockRefAlternate" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_0"/>
+                                 <array name="CanWakeupSourceRef"/>
+                                 <array name="CanControllerBaudrateConfig">
+                                    <struct name="0">
+                                       <setting name="Name" value="CanControllerBaudrateConfig_0"/>
+                                       <setting name="CanBaudrateTypeSuport" value="NORMAL_CBT"/>
+                                       <setting name="CanAdvancedSetting" value="false"/>
+                                       <setting name="CanBusLength" value="40"/>
+                                       <setting name="CanPropDelayTranceiver" value="150"/>
+                                       <setting name="CanTxArbitrationStartDelay" value="12"/>
+                                       <setting name="CanControllerPrescaller" value="6"/>
+                                       <setting name="CanControllerPrescallerAlternate" value="10"/>
+                                       <setting name="CanControllerBaudRateConfigID" value="0"/>
+                                       <setting name="CanControllerBaudRate" value="500"/>
+                                       <setting name="CanControllerSyncSeg" value="1"/>
+                                       <setting name="CanControllerPropSeg" value="2"/>
+                                       <setting name="CanControllerSeg1" value="3"/>
+                                       <setting name="CanControllerSeg2" value="2"/>
+                                       <setting name="CanControllerSyncJumpWidth" value="1"/>
+                                       <array name="CanControllerFdBaudrateConfig"/>
+                                    </struct>
+                                 </array>
+                                 <array name="CanTTController"/>
+                                 <array name="CanRamBlock"/>
+                                 <array name="CanRxFiFo"/>
+                                 <array name="CanControllerTimeStamp"/>
+                              </struct>
+                           </array>
+                           <array name="CanHardwareObject">
+                              <struct name="0">
+                                 <setting name="Name" value="CAN00_MailBox0_RX"/>
+                                 <array name="CanFdPaddingValue"/>
+                                 <setting name="CanHandleType" value="BASIC"/>
+                                 <setting name="CanIdType" value="STANDARD"/>
+                                 <setting name="CanObjectId" value="0"/>
+                                 <setting name="CanObjectType" value="RECEIVE"/>
+                                 <array name="CanObjectPayloadLength"/>
+                                 <array name="CanHardwareObjectUsesPolling"/>
+                                 <array name="CanTriggerTransmitEnable"/>
+                                 <setting name="CanControllerRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0"/>
+                                 <array name="CanMainFunctionRWPeriodRef">
+                                    <setting name="0" value="/Can_43_FLEXCAN/Can/CanGeneral/CanMainFunctionRWPeriods_0"/>
+                                 </array>
+                                 <array name="CanHwObjectUsesBlock"/>
+                                 <setting name="CanHwObjectCount" value="1"/>
+                                 <array name="CanHwFilter">
+                                    <struct name="0">
+                                       <setting name="Name" value="Can_aHwFilter_Object_0"/>
+                                       <setting name="CanHwFilterCode" value="0"/>
+                                       <setting name="CanHwFilterMask" value="0"/>
+                                    </struct>
+                                 </array>
+                                 <array name="CanTTHardwareObjectTrigger"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="CAN00_MailBox1_TX"/>
+                                 <array name="CanFdPaddingValue"/>
+                                 <setting name="CanHandleType" value="BASIC"/>
+                                 <setting name="CanIdType" value="STANDARD"/>
+                                 <setting name="CanObjectId" value="1"/>
+                                 <setting name="CanObjectType" value="TRANSMIT"/>
+                                 <array name="CanObjectPayloadLength"/>
+                                 <array name="CanHardwareObjectUsesPolling"/>
+                                 <array name="CanTriggerTransmitEnable"/>
+                                 <setting name="CanControllerRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0"/>
+                                 <array name="CanMainFunctionRWPeriodRef">
+                                    <setting name="0" value="/Can_43_FLEXCAN/Can/CanGeneral/CanMainFunctionRWPeriods_0"/>
+                                 </array>
+                                 <array name="CanHwObjectUsesBlock"/>
+                                 <setting name="CanHwObjectCount" value="1"/>
+                                 <array name="CanHwFilter"/>
+                                 <array name="CanTTHardwareObjectTrigger"/>
+                              </struct>
+                           </array>
+                        </struct>
+                        <struct name="CommonPublishedInformation" quick_selection="Default">
+                           <setting name="Name" value="CommonPublishedInformation"/>
+                           <setting name="ModuleId" value="80"/>
+                           <setting name="VendorId" value="43"/>
+                           <setting name="VendorApiInfix" value="FLEXCAN"/>
+                           <setting name="ArReleaseMajorVersion" value="4"/>
+                           <setting name="ArReleaseMinorVersion" value="7"/>
+                           <setting name="ArReleaseRevisionVersion" value="0"/>
+                           <setting name="SwMajorVersion" value="5"/>
+                           <setting name="SwMinorVersion" value="0"/>
+                           <setting name="SwPatchVersion" value="0"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="CanIf" uuid="869154dc-5a94-4fb4-97c1-b110de1f9359" type="CanIf" type_id="CanIf" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="CanIf">
+                        <setting name="Name" value="CanIf"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="false"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-PRE-COMPILE"/>
+                        </struct>
+                        <struct name="CanIfPublicCfg" quick_selection="Default">
+                           <setting name="Name" value="CanIfPublicCfg"/>
+                           <setting name="CanIfDevErrorDetect" value="false"/>
+                           <array name="CanIfPublicCddHeaderFile"/>
+                        </struct>
+                        <array name="CanIfCtrlDrvCfg">
+                           <struct name="0">
+                              <setting name="Name" value="CanIfCtrlDrvCfg_0"/>
+                              <setting name="CanIfCtrlDrvNameRef" value="/Can_43_FLEXCAN/Can/CanGeneral"/>
+                              <array name="CanIfCtrlCfg">
+                                 <struct name="0">
+                                    <setting name="Name" value="CanIfCtrlCfg_0"/>
+                                    <setting name="CanIfCtrlId" value="0"/>
+                                    <setting name="CanIfCtrlCanCtrlRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0"/>
+                                 </struct>
+                              </array>
+                           </struct>
+                        </array>
+                        <struct name="CanIfInitCfg" quick_selection="Default">
+                           <setting name="Name" value="CanIfInitCfg"/>
+                           <array name="CanIfMaxRxPduCfg"/>
+                           <array name="CanIfMaxTxPduCfg"/>
+                           <array name="CanIfTxPduCfg"/>
+                           <array name="CanIfRxPduCfg"/>
+                           <array name="CanIfBufferCfg"/>
+                           <array name="CanIfInitHohCfg"/>
+                        </struct>
+                        <struct name="CanIfDispatchCfg">
+                           <setting name="Name" value="CanIfDispatchCfg"/>
+                           <array name="CanIfDispatchUserCtrlBusOffName"/>
+                           <setting name="CanIfDispatchUserCtrlBusOffUL" value="CDD"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="EcuM" uuid="f43eb3e3-5d04-4047-8c51-f86bacb8738d" type="EcuM" type_id="EcuM" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="EcuM">
+                        <setting name="Name" value="EcuM"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="false"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-POST-BUILD"/>
+                        </struct>
+                        <struct name="EcuMConfiguration">
+                           <setting name="Name" value="EcuMConfiguration"/>
+                           <struct name="EcuMCommonConfiguration">
+                              <setting name="Name" value="EcuMCommonConfiguration"/>
+                              <array name="EcuMSleepMode">
+                                 <struct name="0">
+                                    <setting name="Name" value="EcuMSleepMode_0"/>
+                                    <setting name="EcuMSleepModeId" value="0"/>
+                                    <setting name="EcuMSleepModeSuspend" value="false"/>
+                                    <setting name="EcuMSleepModeMcuModeRef" value="/Mcu/Mcu/McuModuleConfiguration/McuModeSettingConf_0"/>
+                                    <array name="EcuMWakeupSourceMask">
+                                       <setting name="0" value="/EcuM/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource_0"/>
+                                    </array>
+                                 </struct>
+                              </array>
+                              <array name="EcuMWakeupSource">
+                                 <struct name="0">
+                                    <setting name="Name" value="EcuMWakeupSource_0"/>
+                                    <array name="EcuMCheckWakeupTimeout"/>
+                                    <array name="EcuMValidationTimeout"/>
+                                    <setting name="EcuMWakeupSourceId" value="0"/>
+                                    <setting name="EcuMWakeupSourcePolling" value="false"/>
+                                    <array name="EcuMResetReasonRef"/>
+                                 </struct>
+                              </array>
+                           </struct>
+                        </struct>
                      </config_set>
                   </instance>
                </instances>
