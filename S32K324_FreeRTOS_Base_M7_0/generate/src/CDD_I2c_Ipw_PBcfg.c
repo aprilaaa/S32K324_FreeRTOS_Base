@@ -1,7 +1,7 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.7
 *   Platform             : CORTEXM
-*   Peripheral           : SIUL2
+*   Peripheral           : LPI2C
 *   Dependencies         : none
 *
 *   Autosar Version      : 4.7.0
@@ -12,8 +12,8 @@
 *
 *   Copyright 2020 - 2024 NXP
 *
-*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be
-*   used strictly in accordance with the applicable license terms. By expressly
+*   NXP Confidential and Proprietary. This software is owned or controlled by NXP and may
+*   only be used strictly in accordance with the applicable license terms. By expressly
 *   accepting such terms or by downloading, installing, activating and/or otherwise
 *   using the software, you are agreeing that you have read, and that you agree to
 *   comply with and are bound by, such license terms. If you do not agree to be
@@ -22,15 +22,18 @@
 ==================================================================================================*/
 
 /**
-*   @file    Tspc_Port_Ip_PBcfg.c
+*   @file
 *
-*   @addtogroup Port_CFG
+*   @addtogroup I2C_DRIVER_CONFIGURATION I2c Driver Configurations
 *   @{
 */
 
+
 #ifdef __cplusplus
-extern "C"{
+extern "C"
+{
 #endif
+
 
 /*==================================================================================================
 *                                          INCLUDE FILES
@@ -38,50 +41,64 @@ extern "C"{
 * 2) needed interfaces from external units
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Tspc_Port_Ip.h"
+#include "Lpi2c_Ip_PBcfg.h"
+#include "CDD_I2c_Ipw_PBcfg.h"
 
 /*==================================================================================================
-*                                 SOURCE FILE VERSION INFORMATION
+*                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define TSPC_PORT_IP_VENDOR_ID_PBCFG_C                       43
-#define TSPC_PORT_IP_AR_RELEASE_MAJOR_VERSION_PBCFG_C        4
-#define TSPC_PORT_IP_AR_RELEASE_MINOR_VERSION_PBCFG_C        7
-#define TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_PBCFG_C     0
-#define TSPC_PORT_IP_SW_MAJOR_VERSION_PBCFG_C                5
-#define TSPC_PORT_IP_SW_MINOR_VERSION_PBCFG_C                0
-#define TSPC_PORT_IP_SW_PATCH_VERSION_PBCFG_C                0
+#define CDD_I2C_IPW_PBCFG_VENDOR_ID_C                     43
+#define CDD_I2C_IPW_PBCFG_MODULE_ID_C                     255
+#define CDD_I2C_IPW_PBCFG_AR_RELEASE_MAJOR_VERSION_C      4
+#define CDD_I2C_IPW_PBCFG_AR_RELEASE_MINOR_VERSION_C      7
+#define CDD_I2C_IPW_PBCFG_AR_RELEASE_REVISION_VERSION_C   0
+#define CDD_I2C_IPW_PBCFG_SW_MAJOR_VERSION_C              5
+#define CDD_I2C_IPW_PBCFG_SW_MINOR_VERSION_C              0
+#define CDD_I2C_IPW_PBCFG_SW_PATCH_VERSION_C              0
 
 /*==================================================================================================
 *                                       FILE VERSION CHECKS
 ==================================================================================================*/
-/* Check if Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h are of the same vendor */
-#if (TSPC_PORT_IP_VENDOR_ID_PBCFG_C != TSPC_PORT_IP_VENDOR_ID_H)
-    #error "Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h have different vendor ids"
+/* Check if current file and Lpi2c_Ip_PBcfg.h header file are of the same vendor */
+#if (CDD_I2C_IPW_PBCFG_VENDOR_ID_C != LPI2C_IP_PBCFG_VENDOR_ID)
+    #error "CDD_I2c_Ipw_PBcfg.c and Lpi2c_Ip_PBcfg.h have different vendor ids"
 #endif
-/* Check if Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h are of the same Autosar version */
-#if ((TSPC_PORT_IP_AR_RELEASE_MAJOR_VERSION_PBCFG_C    != TSPC_PORT_IP_AR_RELEASE_MAJOR_VERSION_H) || \
-     (TSPC_PORT_IP_AR_RELEASE_MINOR_VERSION_PBCFG_C    != TSPC_PORT_IP_AR_RELEASE_MINOR_VERSION_H) || \
-     (TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_PBCFG_C != TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_H) \
-    )
-    #error "AutoSar Version Numbers of Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h are different"
+/* Check if current file and Lpi2c_Ip_PBcfg.h file are of the same Autosar version */
+#if ((CDD_I2C_IPW_PBCFG_AR_RELEASE_MAJOR_VERSION_C    != LPI2C_IP_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_AR_RELEASE_MINOR_VERSION_C    != LPI2C_IP_PBCFG_AR_RELEASE_MINOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_AR_RELEASE_REVISION_VERSION_C != LPI2C_IP_PBCFG_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of CDD_I2c_Ipw_PBcfg.c and Lpi2c_Ip_PBcfg.h are different"
+#endif
+/* Check if current file and Lpi2c_Ip_PBcfg.h header file are of the same Software version */
+#if ((CDD_I2C_IPW_PBCFG_SW_MAJOR_VERSION_C != LPI2C_IP_PBCFG_SW_MAJOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_SW_MINOR_VERSION_C != LPI2C_IP_PBCFG_SW_MINOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_SW_PATCH_VERSION_C != LPI2C_IP_PBCFG_SW_PATCH_VERSION))
+    #error "Software Version Numbers of CDD_I2c_Ipw_PBcfg.c and Lpi2c_Ip_PBcfg.h are different"
 #endif
 
-/* Check if Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h are of the same software version */
-#if ((TSPC_PORT_IP_SW_MAJOR_VERSION_PBCFG_C != TSPC_PORT_IP_SW_MAJOR_VERSION_H) || \
-     (TSPC_PORT_IP_SW_MINOR_VERSION_PBCFG_C != TSPC_PORT_IP_SW_MINOR_VERSION_H) || \
-     (TSPC_PORT_IP_SW_PATCH_VERSION_PBCFG_C != TSPC_PORT_IP_SW_PATCH_VERSION_H)    \
-    )
-    #error "Software Version Numbers of Tspc_Port_Ip_PBcfg.c and Tspc_Port_Ip.h are different"
+/* Check if current file and CDD_I2c_Ipw_PBcfg.h header file are of the same vendor */
+#if (CDD_I2C_IPW_PBCFG_VENDOR_ID_C != CDD_I2C_IPW_PBCFG_VENDOR_ID)
+    #error "CDD_I2c_Ipw_PBcfg.c and CDD_I2c_Ipw_PBcfg.h have different vendor ids"
+#endif
+/* Check if current file and CDD_I2c_Ipw_PBcfg.h file are of the same Autosar version */
+#if ((CDD_I2C_IPW_PBCFG_AR_RELEASE_MAJOR_VERSION_C    != CDD_I2C_IPW_PBCFG_AR_RELEASE_MAJOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_AR_RELEASE_MINOR_VERSION_C    != CDD_I2C_IPW_PBCFG_AR_RELEASE_MINOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_AR_RELEASE_REVISION_VERSION_C != CDD_I2C_IPW_PBCFG_AR_RELEASE_REVISION_VERSION))
+    #error "AutoSar Version Numbers of CDD_I2c_Ipw_PBcfg.c and CDD_I2c_Ipw_PBcfg.h are different"
+#endif
+/* Check if current file and CDD_I2c_Ipw_PBcfg.h header file are of the same Software version */
+#if ((CDD_I2C_IPW_PBCFG_SW_MAJOR_VERSION_C != CDD_I2C_IPW_PBCFG_SW_MAJOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_SW_MINOR_VERSION_C != CDD_I2C_IPW_PBCFG_SW_MINOR_VERSION) || \
+     (CDD_I2C_IPW_PBCFG_SW_PATCH_VERSION_C != CDD_I2C_IPW_PBCFG_SW_PATCH_VERSION))
+    #error "Software Version Numbers of CDD_I2c_Ipw_PBcfg.c and CDD_I2c_Ipw_PBcfg.h are different"
 #endif
 /*==================================================================================================
 *                           LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
 ==================================================================================================*/
 
-
 /*==================================================================================================
 *                                          LOCAL MACROS
 ==================================================================================================*/
-
 
 /*==================================================================================================
 *                                         LOCAL CONSTANTS
@@ -94,67 +111,20 @@ extern "C"{
 /*==================================================================================================
 *                                        GLOBAL CONSTANTS
 ==================================================================================================*/
+#define I2C_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "I2c_MemMap.h"
 
-/*==================================================================================================
-*                                        GLOBAL VARIABLES
-==================================================================================================*/
-#define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Port_MemMap.h"
-
-const Tspc_Port_Ip_ObeGroupConfig aTspc_InitConfigArr[NUM_OF_OBE_GROUP_CONFIG] = 
+/* Config structure for channel LPI2C_1 */
+const Lpi2c_Ipw_HwChannelConfigType I2c_Ipw_ChannelConfig0 =
 {
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 5
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    },
-    {
-        .obeGroupSelect = 0,
-        .obeGroupIndex  = 65535
-    }
+    &I2c_Lpi2cMasterChannel0,
+    NULL_PTR
 };
 
-#define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
-#include "Port_MemMap.h"
 
-/*==================================================================================================
-*                                        GLOBAL CONSTANTS
-==================================================================================================*/
+
+#define I2C_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "I2c_MemMap.h"
 
 /*==================================================================================================
 *                                        GLOBAL VARIABLES
@@ -172,9 +142,11 @@ const Tspc_Port_Ip_ObeGroupConfig aTspc_InitConfigArr[NUM_OF_OBE_GROUP_CONFIG] =
 *                                        GLOBAL FUNCTIONS
 ==================================================================================================*/
 
+
 #ifdef __cplusplus
 }
 #endif
 
 /** @} */
+
 

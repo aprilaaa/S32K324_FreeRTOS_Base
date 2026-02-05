@@ -12,6 +12,10 @@
 #include "task.h"
 #include "Dio.h"
 #include "Adc.h"
+#include "Can_43_FLEXCAN.h"
+#include "CanIf.h"
+#include "Platform.h"
+#include "SchM_Can_43_FLEXCAN.h"
 
 #define PRIO_1MS    ( tskIDLE_PRIORITY + 5 )
 #define PRIO_10MS   ( tskIDLE_PRIORITY + 4 )

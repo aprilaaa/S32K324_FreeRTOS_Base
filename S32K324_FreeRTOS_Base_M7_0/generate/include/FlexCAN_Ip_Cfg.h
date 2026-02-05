@@ -137,7 +137,7 @@ extern "C"{
 #endif
 
 /* Time out value in uS */
-#define FLEXCAN_IP_TIMEOUT_DURATION    (10000U)
+#define FLEXCAN_IP_TIMEOUT_DURATION    (1000000U)
 
 /* This this will set the timer source for osif that will be used for timeout */
 #define FLEXCAN_IP_SERVICE_TIMEOUT_TYPE    (OSIF_COUNTER_DUMMY)

@@ -35,9 +35,8 @@
 #include "Clock_Ip.h"
 #include "Port.h"
 #include "Mcu.h"
-#include "Platform.h"
-#include "Can_43_FLEXCAN.h"
-#include "CanIf.h"
+
+
 
 volatile int exit_code = 0;
 
@@ -108,10 +107,10 @@ int main(void)
     Adc_EnableGroupNotification(AdcGroupSoftwareOneShot);
 
 
-    xTaskCreate(vTask1ms, "Task1ms", configMINIMAL_STACK_SIZE, NULL, PRIO_1MS, &xHandle1ms);
-    xTaskCreate(vTask10ms, "Task10ms", configMINIMAL_STACK_SIZE, NULL, PRIO_10MS, &xHandle10ms);
-    xTaskCreate(vTask100ms, "Task100ms", configMINIMAL_STACK_SIZE, NULL, PRIO_100MS, &xHandle100ms);
-    xTaskCreate(vTask1000ms, "Task1000ms", configMINIMAL_STACK_SIZE, NULL, PRIO_1000MS, &xHandle1000ms);
+    xTaskCreate(vTask1ms, "Task1ms", 1024, NULL, PRIO_1MS, &xHandle1ms);
+    xTaskCreate(vTask10ms, "Task10ms", 1024, NULL, PRIO_10MS, &xHandle10ms);
+    xTaskCreate(vTask100ms, "Task100ms", 1024, NULL, PRIO_100MS, &xHandle100ms);
+    xTaskCreate(vTask1000ms, "Task1000ms", 1024, NULL, PRIO_1000MS, &xHandle1000ms);
     vTaskStartScheduler();
 
     for(;;);
