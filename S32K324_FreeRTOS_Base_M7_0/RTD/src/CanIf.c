@@ -211,36 +211,36 @@ void CanIf_RxIndication
     const CanIf_RxPduType * RxPduInfo = NULL_PTR;
     uint8 CanDrvId = 0U;
 
-    // if (NULL_PTR != CanIf_ConfigPtr)
-    // {
-    //     if ((Mailbox->ControllerId) < (CanIf_PCConfig.NumOfCtrl))
-    //     {
-    //         if ((Mailbox->Hoh) < (CanIf_PCConfig.CanIfCtrlConfigPtr[Mailbox->ControllerId].CanDrvConfigPtr->NumCanHoh))
-    //         {
-    //             CanDrvId = CanIf_PCConfig.CanIfCtrlConfigPtr[Mailbox->ControllerId].CanDrvConfigPtr->CanDrvId;
-    //             RxPduInfo = CanIf_ConfigPtr->CanDrvConfigPtr[CanDrvId]->HohToRxPduMappingPtr[Mailbox->Hoh];
+    if (NULL_PTR != CanIf_ConfigPtr)
+    {
+        if ((Mailbox->ControllerId) < (CanIf_PCConfig.NumOfCtrl))
+        {
+            if ((Mailbox->Hoh) < (CanIf_PCConfig.CanIfCtrlConfigPtr[Mailbox->ControllerId].CanDrvConfigPtr->NumCanHoh))
+            {
+                CanDrvId = CanIf_PCConfig.CanIfCtrlConfigPtr[Mailbox->ControllerId].CanDrvConfigPtr->CanDrvId;
+                RxPduInfo = CanIf_ConfigPtr->CanDrvConfigPtr[CanDrvId]->HohToRxPduMappingPtr[Mailbox->Hoh];
                 
-    //             /* Will discard the Can HOH if it was not referred by any CanIf RxPDU */
-    //             if (NULL_PTR != RxPduInfo)
-    //             {
-    //                 if (NULL_PTR != RxPduInfo->UserRxIndication)
-    //                 {
-    //                     UserPduId = RxPduInfo->PduId;
-    //                     if ((TRUE == RxPduInfo->PduLengthCheck) && (PduInfoPtr->SduLength > (RxPduInfo->PduLength)))
-    //                     {
-    //                         PduInfo.SduLength = RxPduInfo->PduLength; /* Truncates exceeded data as configured on GUI */
-    //                     }
-    //                     else
-    //                     {
-    //                         PduInfo.SduLength = PduInfoPtr->SduLength;
-    //                     }
-    //                     PduInfo.SduDataPtr = PduInfoPtr->SduDataPtr;
-    //                     RxPduInfo->UserRxIndication(UserPduId, &PduInfo);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+                /* Will discard the Can HOH if it was not referred by any CanIf RxPDU */
+                if (NULL_PTR != RxPduInfo)
+                {
+                    if (NULL_PTR != RxPduInfo->UserRxIndication)
+                    {
+                        UserPduId = RxPduInfo->PduId;
+                        if ((TRUE == RxPduInfo->PduLengthCheck) && (PduInfoPtr->SduLength > (RxPduInfo->PduLength)))
+                        {
+                            PduInfo.SduLength = RxPduInfo->PduLength; /* Truncates exceeded data as configured on GUI */
+                        }
+                        else
+                        {
+                            PduInfo.SduLength = PduInfoPtr->SduLength;
+                        }
+                        PduInfo.SduDataPtr = PduInfoPtr->SduDataPtr;
+                        RxPduInfo->UserRxIndication(UserPduId, &PduInfo);
+                    }
+                }
+            }
+        }
+    }
 }
 
 void CanIf_ControllerBusOff(uint8 ControllerId)

@@ -101,11 +101,15 @@
                      <pin_features>
                         <pin_feature name="identifier" value="SDA"/>
                         <pin_feature name="direction" value="INPUT/OUTPUT"/>
+                        <pin_feature name="pullSelect" value="pullUp"/>
+                        <pin_feature name="pullEnable" value="enabled"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="LPI2C1" signal="lpi2c1_scl" pin_num="140" pin_signal="PTC7">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT/OUTPUT"/>
+                        <pin_feature name="pullSelect" value="pullUp"/>
+                        <pin_feature name="pullEnable" value="enabled"/>
                      </pin_features>
                   </pin>
                </pins>
@@ -1116,8 +1120,8 @@
                                     </struct>
                                     <struct name="9">
                                        <setting name="Name" value="PortPin_9"/>
-                                       <setting name="PortPinPue" value="false"/>
-                                       <setting name="PortPinPus" value="false"/>
+                                       <setting name="PortPinPue" value="true"/>
+                                       <setting name="PortPinPus" value="true"/>
                                        <setting name="PortPinSafeMode" value="false"/>
                                        <setting name="PortPinDse" value="false"/>
                                        <setting name="PortPinWithReadBack" value="false"/>
@@ -1138,8 +1142,8 @@
                                     </struct>
                                     <struct name="10">
                                        <setting name="Name" value="PortPin_10"/>
-                                       <setting name="PortPinPue" value="false"/>
-                                       <setting name="PortPinPus" value="false"/>
+                                       <setting name="PortPinPue" value="true"/>
+                                       <setting name="PortPinPus" value="true"/>
                                        <setting name="PortPinSafeMode" value="false"/>
                                        <setting name="PortPinDse" value="false"/>
                                        <setting name="PortPinWithReadBack" value="false"/>
@@ -1600,7 +1604,7 @@
                                     </struct>
                                     <struct name="2">
                                        <setting name="Name" value="McuClockReferencePoint_I2C"/>
-                                       <setting name="McuClockFrequencySelect" value="AIPS_PLAT_CLK"/>
+                                       <setting name="McuClockFrequencySelect" value="AIPS_SLOW_CLK"/>
                                     </struct>
                                  </array>
                               </struct>
@@ -2907,21 +2911,23 @@
                                  <setting name="I2cChannelId" value="0"/>
                                  <setting name="I2cHwChannel" value="LPI2C_1"/>
                                  <setting name="I2cMasterSlaveConfiguration" value="MASTER_MODE"/>
-                                 <setting name="I2cOperatingMode" value="LPI2C_STANDARD_MODE"/>
+                                 <setting name="I2cOperatingMode" value="LPI2C_FAST_MODE"/>
                                  <array name="I2cChannelEcucPartitionRef"/>
                                  <struct name="I2cMasterConfiguration">
                                     <setting name="Name" value="I2c_Lpi2cMasterChannel1"/>
                                     <setting name="I2cPrescaler" value="LPI2C_MASTER_PRESC_DIV_1"/>
                                     <setting name="I2cDataValidDelay" value="1"/>
                                     <setting name="I2cSetupHoldDelay" value="2"/>
-                                    <setting name="I2cClockHighPeriod" value="1"/>
-                                    <setting name="I2cClockLowPeriod" value="3"/>
-                                    <setting name="I2cPinLowTimeout" value="0"/>
-                                    <setting name="I2cBusIdleTimeout" value="0"/>
+                                    <setting name="I2cClockHighPeriod" value="39"/>
+                                    <setting name="I2cClockLowPeriod" value="57"/>
+                                    <setting name="I2cPinLowTimeout" value="20"/>
+                                    <setting name="I2cBusIdleTimeout" value="20"/>
                                     <setting name="I2cMasterFilterEnable" value="false"/>
                                     <setting name="I2cGlitchFilterSDA" value="0"/>
                                     <setting name="I2cGlitchFilterSCL" value="0"/>
-                                    <array name="I2cClockRef"/>
+                                    <array name="I2cClockRef">
+                                       <setting name="0" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_I2C"/>
+                                    </array>
                                     <setting name="I2cAsyncMethod" value="LPI2C_USING_INTERRUPTS"/>
                                     <array name="I2cDmaTxChannelRef"/>
                                     <array name="I2cDmaRxChannelRef"/>

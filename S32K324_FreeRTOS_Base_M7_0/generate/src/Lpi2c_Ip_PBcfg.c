@@ -116,8 +116,8 @@ extern "C"
 static const Lpi2c_Ip_BaudRateType baudrateParams0 =
 {
     LPI2C_MASTER_PRESC_DIV_1, /* Prescaler */
-    1U,  /* Clock HI period */
-    3U,  /* Clock LO period */
+    39U,  /* Clock HI period */
+    57U,  /* Clock LO period */
     2U, /* Setup Delay */
     1U,  /* Data Valid */
 #if ( STD_ON == LPI2C_IP_FEATURE_CTRL_HS_MODE_AVAILABLE )
@@ -135,13 +135,13 @@ const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel0 =
     /*10-bit address */
     (boolean)FALSE,
     /* Operating Mode */
-    LPI2C_STANDARD_MODE,
+    LPI2C_FAST_MODE,
     /* Baudrate parameters */
     &baudrateParams0,
     /* Pin Low Timeout */
-    0U,
+    20U,
     /* Bus Idle Timeout */
-    0U,
+    20U,
     /* Glitch Filter SDA */
     0U,
     /* Glitch Filter SDA */

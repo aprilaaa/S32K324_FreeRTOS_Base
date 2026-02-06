@@ -46,6 +46,7 @@ volatile uint8 VarNotification_0 = 0u;
 
 extern ISR(Adc_Sar_1_Isr);
 
+
 void Notification_0(void)
 {
     VarNotification_0++;
@@ -100,6 +101,9 @@ int main(void)
 	#else
 	CanIf_Init(&CanIf_Config);
 	#endif
+
+    /* Init i2c instances */
+    I2c_Init(NULL_PTR);
 
 	Can_43_FLEXCAN_SetControllerMode(Can_43_FLEXCANConf_CanController_CanController_0, CAN_CS_STARTED);
 
