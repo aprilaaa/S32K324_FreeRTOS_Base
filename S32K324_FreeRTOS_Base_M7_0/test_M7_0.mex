@@ -705,7 +705,7 @@
                            <setting name="configSUPPORT_STATIC_ALLOCATION" value="false"/>
                            <setting name="configSUPPORT_DYNAMIC_ALLOCATION" value="true"/>
                            <setting name="memory_scheme_id" value="heap1"/>
-                           <setting name="configTOTAL_HEAP_SIZE" value="8192"/>
+                           <setting name="configTOTAL_HEAP_SIZE" value="65536"/>
                            <setting name="configAPPLICATION_ALLOCATED_HEAP" value="false"/>
                         </struct>
                         <struct name="symmetricmultiprocessing_tab">
