@@ -17,6 +17,7 @@
 #include "Platform.h"
 #include "SchM_Can_43_FLEXCAN.h"
 #include "dev_ssd1306.h"
+#include <stdio.h>
 
 #define PRIO_1MS    ( tskIDLE_PRIORITY + 5 )
 #define PRIO_10MS   ( tskIDLE_PRIORITY + 4 )

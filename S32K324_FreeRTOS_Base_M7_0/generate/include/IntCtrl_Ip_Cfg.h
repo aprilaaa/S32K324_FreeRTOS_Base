@@ -70,9 +70,13 @@
 ==================================================================================================*/
 #define PLATFORM_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Platform_MemMap.h"
+/* Declaration of the configuration structure for Interrupt Controller (core related) */
+extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
 /* Declaration of interrupt handlers 
  * NOTE: For application specific handlers, these functions must be implemented in the application code!
  */
+extern void Adc_Sar_1_Isr(void);
+extern void LPI2C1_Master_Slave_IRQHandler(void);
 #ifdef  PLATFORM_IP_ENABLE_INT_CTRL
 #if  (PLATFORM_IP_ENABLE_INT_CTRL == STD_ON)
     #if ((INT_CTRL_IP_CORTEXR == STD_ON) || (INT_CTRL_IP_CORTEXA == STD_ON))

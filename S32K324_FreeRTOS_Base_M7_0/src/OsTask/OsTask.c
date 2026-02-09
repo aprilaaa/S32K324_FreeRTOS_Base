@@ -98,15 +98,36 @@ void vTask100ms(void *pvParameters)
     	 	Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDG);
     	 }
 
-     	/* Can_CreatePduInfo(id, swPduHandle,length, sdu) */
+     	/* Can Test */
         static Can_PduType Can_PduInfo;
+        static uint32 CanTx_cnt = 0;
+        extern uint32 CanRx_cnt;
         Can_PduInfo = Can_CreatePduInfo(0U, 0U, 8U, Can_au8Sdu8bytes);
-     	Can_43_FLEXCAN_Write(Can_43_FLEXCANConf_CanHardwareObject_CAN00_MailBox1_TX, &Can_PduInfo);
+     	if(E_OK == Can_43_FLEXCAN_Write(Can_43_FLEXCANConf_CanHardwareObject_CAN00_MailBox1_TX, &Can_PduInfo))
+     	{
+     		CanTx_cnt++;
+     	}
 
+
+     	/* ADC Test */
      	Adc_StartGroupConversion(AdcGroupSoftwareOneShot);
         while (VarNotification_0 == 0u){}
 		VarNotification_0 = 0;
      	Adc_ReadGroup(AdcGroupSoftwareOneShot, &AdcReadGroupResult);
+
+     	/* OLED Test */
+		char buf[20];
+		sprintf(buf, "CNT_S:%u", (unsigned int)vTask1000ms_cnt);
+		dev_ssd1306_show_string(16, 0, 0, (uint8 *)buf);
+
+		sprintf(buf, "ADC_V:%-5u", (unsigned int)AdcReadGroupResult);
+		dev_ssd1306_show_string(16, 0, 2, (uint8 *)buf);
+
+		sprintf(buf, "CANRX:%u", (unsigned int)CanRx_cnt);
+		dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
+
+		sprintf(buf, "CANTX:%u", (unsigned int)CanTx_cnt);
+		dev_ssd1306_show_string(16, 0, 6, (uint8 *)buf);
 
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
     }
@@ -125,7 +146,6 @@ void vTask1000ms(void *pvParameters)
     	vTask1000ms_cnt++;
 
 		Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDB);
-
 
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
     }

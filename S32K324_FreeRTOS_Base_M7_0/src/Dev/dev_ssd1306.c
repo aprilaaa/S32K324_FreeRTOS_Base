@@ -256,7 +256,7 @@ const uint8 g_res_font_6x8[][6] =
 /**************************************************************************
   Local Data Storage
 **************************************************************************/
-sint32  bsp_i2c0_send(uint32 addr, uint8 *buf, uint32 len)
+Std_ReturnType  bsp_i2c0_send(uint32 addr, uint8 *buf, uint32 len)
 {
 	I2c_RequestType req;
 	Std_ReturnType ret;
@@ -270,10 +270,12 @@ sint32  bsp_i2c0_send(uint32 addr, uint8 *buf, uint32 len)
 	req.DataBuffer           = buf;
 
 	ret = I2c_SyncTransmit(I2C_CHANNEL_OLED, &req);
+
+	return ret;
 }
 
 
-static uint32  dev_ssd1306_write_cmd(uint8 addr, uint8 cmd)
+static Std_ReturnType  dev_ssd1306_write_cmd(uint8 addr, uint8 cmd)
 {
 	uint8 send_data[2];
 	send_data[0]=0;
@@ -292,53 +294,43 @@ static sint32  dev_ssd1306_write_data(uint8 addr, uint8 data)
 /**************************************************************************
   Global function
 **************************************************************************/
-sint32 dev_ssd1306_init()
+
+Std_ReturnType dev_ssd1306_init()
 {
-	sint32 ret = 0;
+	Std_ReturnType ret = 0;
 	uint8 addr = devSSD1306_ADDR;
 
-	dev_ssd1306_write_cmd(addr,0X8D);
-	dev_ssd1306_write_cmd(addr,0X10);
-	ret = dev_ssd1306_write_cmd(addr,0xAE);//--display off
-	if(ret < 0){
-		return -1;
-	}
+	ret |= dev_ssd1306_write_cmd(addr,0X8D);
+	ret |= dev_ssd1306_write_cmd(addr,0X10);
+	ret |= dev_ssd1306_write_cmd(addr,0xAE);//--display off
+	ret |= dev_ssd1306_write_cmd(addr,0x00);//---set low column address
+	ret |= dev_ssd1306_write_cmd(addr,0x10);//---set high column address
+	ret |= dev_ssd1306_write_cmd(addr,0x40);//--set start line address
+	ret |= dev_ssd1306_write_cmd(addr,0xB0);//--set page address
+	ret |= dev_ssd1306_write_cmd(addr,0x81); // contract control
+	ret |= dev_ssd1306_write_cmd(addr,0xFF);//--128
+	ret |= dev_ssd1306_write_cmd(addr,0xA1);//set segment remap
+	ret |= dev_ssd1306_write_cmd(addr,0xA6);//--normal / reverse
+	ret |= dev_ssd1306_write_cmd(addr,0xA8);//--set multiplex ratio(1 to 64)
+	ret |= dev_ssd1306_write_cmd(addr,0x3F);//--1/32 duty
+	ret |= dev_ssd1306_write_cmd(addr,0xC8);//Com scan direction
+	ret |= dev_ssd1306_write_cmd(addr,0xD3);//-set display offset
+	ret |= dev_ssd1306_write_cmd(addr,0x00);//
+	ret |= dev_ssd1306_write_cmd(addr,0xD5);//set osc division
+	ret |= dev_ssd1306_write_cmd(addr,0x80);//
+	ret |= dev_ssd1306_write_cmd(addr,0xD8);//set area color mode off
+	ret |= dev_ssd1306_write_cmd(addr,0x05);//
+	ret |= dev_ssd1306_write_cmd(addr,0xD9);//Set Pre-Charge Period
+	ret |= dev_ssd1306_write_cmd(addr,0xF1);//
+	ret |= dev_ssd1306_write_cmd(addr,0xDA);//set com pin configuartion
+	ret |= dev_ssd1306_write_cmd(addr,0x12);//
+	ret |= dev_ssd1306_write_cmd(addr,0xDB);//set Vcomh
+	ret |= dev_ssd1306_write_cmd(addr,0x30);//
+	ret |= dev_ssd1306_write_cmd(addr,0x8D);//set charge pump enable
+	ret |= dev_ssd1306_write_cmd(addr,0x14);//
+	ret |= dev_ssd1306_write_cmd(addr,0xAF);//--turn on oled panel
 
-	dev_ssd1306_write_cmd(addr,0x00);//---set low column address
-	dev_ssd1306_write_cmd(addr,0x10);//---set high column address
-	dev_ssd1306_write_cmd(addr,0x40);//--set start line address
-	dev_ssd1306_write_cmd(addr,0xB0);//--set page address
-	dev_ssd1306_write_cmd(addr,0x81); // contract control
-	dev_ssd1306_write_cmd(addr,0xFF);//--128
-	dev_ssd1306_write_cmd(addr,0xA1);//set segment remap
-	dev_ssd1306_write_cmd(addr,0xA6);//--normal / reverse
-	dev_ssd1306_write_cmd(addr,0xA8);//--set multiplex ratio(1 to 64)
-	dev_ssd1306_write_cmd(addr,0x3F);//--1/32 duty
-	dev_ssd1306_write_cmd(addr,0xC8);//Com scan direction
-	dev_ssd1306_write_cmd(addr,0xD3);//-set display offset
-	dev_ssd1306_write_cmd(addr,0x00);//
-
-	dev_ssd1306_write_cmd(addr,0xD5);//set osc division
-	dev_ssd1306_write_cmd(addr,0x80);//
-
-	dev_ssd1306_write_cmd(addr,0xD8);//set area color mode off
-	dev_ssd1306_write_cmd(addr,0x05);//
-
-	dev_ssd1306_write_cmd(addr,0xD9);//Set Pre-Charge Period
-	dev_ssd1306_write_cmd(addr,0xF1);//
-
-	dev_ssd1306_write_cmd(addr,0xDA);//set com pin configuartion
-	dev_ssd1306_write_cmd(addr,0x12);//
-
-	dev_ssd1306_write_cmd(addr,0xDB);//set Vcomh
-	dev_ssd1306_write_cmd(addr,0x30);//
-						 
-	dev_ssd1306_write_cmd(addr,0x8D);//set charge pump enable
-	dev_ssd1306_write_cmd(addr,0x14);//
-
-	dev_ssd1306_write_cmd(addr,0xAF);//--turn on oled panel
-
-	return 0;
+	return ret;
 }
 
 sint32 dev_ssd1306_set_pos(uint32 x, uint32 y)
@@ -403,7 +395,7 @@ sint32 dev_ssd1306_draw_bmp(uint32 x0,uint32 y0,uint32 x1,uint32 y1, uint8* bmp)
 	return 0;
 }
 
-sint32 dev_ssd1306_show_char(uint8 type, uint8 x, uint8 y, uint8 chr) {
+void dev_ssd1306_show_char(uint8 type, uint8 x, uint8 y, uint8 chr) {
 	uint8 c = 0, i = 0;
 	c = chr - ' ';
 	if (x > devSSD1306_WIDTH - 1) {

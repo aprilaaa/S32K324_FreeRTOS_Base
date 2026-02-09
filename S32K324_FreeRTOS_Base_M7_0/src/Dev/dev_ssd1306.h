@@ -22,14 +22,14 @@
 /**************************************************************************
   Global Function Prototypes
 **************************************************************************/
-sint32  bsp_i2c0_send(uint32 addr, uint8 *buf, uint32 len);
-sint32 dev_ssd1306_init();
+Std_ReturnType bsp_i2c0_send(uint32 addr, uint8 *buf, uint32 len);
+Std_ReturnType dev_ssd1306_init(void);
 sint32 dev_ssd1306_set_pos(uint32 x, uint32 y);
 sint32 dev_ssd1306_draw_pattern(uint8 pattern);
 sint32 dev_ssd1306_draw_bmp(uint32 x0,uint32 y0,uint32 x1,uint32 y1, uint8* bmp);
-sint32 dev_ssd1306_display_on();
-sint32 dev_ssd1306_display_off();
-sint32 dev_ssd1306_show_char(uint8 type, uint8 x, uint8 y, uint8 chr);
+sint32 dev_ssd1306_display_on(void);
+sint32 dev_ssd1306_display_off(void);
+void dev_ssd1306_show_char(uint8 type, uint8 x, uint8 y, uint8 chr);
 void dev_ssd1306_show_string(uint8 type, uint8 x,uint8 y,uint8 *chr);
 
 

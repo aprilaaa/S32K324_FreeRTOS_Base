@@ -44,8 +44,6 @@ Adc_ValueGroupType    AdcResult;
 Adc_ValueGroupType    AdcReadGroupResult;
 volatile uint8 VarNotification_0 = 0u;
 
-extern ISR(Adc_Sar_1_Isr);
-
 
 void Notification_0(void)
 {
@@ -78,8 +76,6 @@ int main(void)
 
     /* Initialize Platform Driver */
     Platform_Init(NULL_PTR);
-    Platform_InstallIrqHandler(ADC1_IRQn, Adc_Sar_1_Isr, NULL_PTR);
-    Platform_SetIrq(ADC1_IRQn, TRUE);
 
     /* Initialize ADC Driver */
 	#if (ADC_PRECOMPILE_SUPPORT == STD_ON)
@@ -109,6 +105,9 @@ int main(void)
 
     Adc_SetupResultBuffer(AdcGroupSoftwareOneShot, &AdcResult);
     Adc_EnableGroupNotification(AdcGroupSoftwareOneShot);
+
+    dev_ssd1306_init();
+    dev_ssd1306_draw_pattern(0x00);
 
 
     xTaskCreate(vTask1ms, "Task1ms", 1024, NULL, PRIO_1MS, &xHandle1ms);

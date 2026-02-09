@@ -199,7 +199,7 @@ void CanIf_TxConfirmation
     }
 }
 
-
+uint32 CanRx_cnt = 0;
 void CanIf_RxIndication
 (
     const Can_HwType * Mailbox,
@@ -210,7 +210,7 @@ void CanIf_RxIndication
     PduInfoType PduInfo;
     const CanIf_RxPduType * RxPduInfo = NULL_PTR;
     uint8 CanDrvId = 0U;
-
+    CanRx_cnt++;
     if (NULL_PTR != CanIf_ConfigPtr)
     {
         if ((Mailbox->ControllerId) < (CanIf_PCConfig.NumOfCtrl))
