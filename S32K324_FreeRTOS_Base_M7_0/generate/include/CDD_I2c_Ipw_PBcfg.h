@@ -112,6 +112,7 @@ extern "C"
 #include "I2c_MemMap.h"
 
 extern const Lpi2c_Ipw_HwChannelConfigType I2c_Ipw_ChannelConfig0;
+extern const Lpi2c_Ipw_HwChannelConfigType I2c_Ipw_ChannelConfig1;
 
 #define I2C_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "I2c_MemMap.h"

@@ -114,10 +114,17 @@ extern "C"
 #define I2C_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "I2c_MemMap.h"
 
-/* Config structure for channel LPI2C_1 */
+/* Config structure for channel LPI2C_0 */
 const Lpi2c_Ipw_HwChannelConfigType I2c_Ipw_ChannelConfig0 =
 {
     &I2c_Lpi2cMasterChannel0,
+    NULL_PTR
+};
+
+/* Config structure for channel LPI2C_1 */
+const Lpi2c_Ipw_HwChannelConfigType I2c_Ipw_ChannelConfig1 =
+{
+    &I2c_Lpi2cMasterChannel1,
     NULL_PTR
 };
 

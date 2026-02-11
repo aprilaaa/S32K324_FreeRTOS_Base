@@ -77,6 +77,7 @@ extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
  */
 extern void Adc_Sar_1_Isr(void);
 extern void LPI2C1_Master_Slave_IRQHandler(void);
+extern void LPI2C0_Master_Slave_IRQHandler(void);
 #ifdef  PLATFORM_IP_ENABLE_INT_CTRL
 #if  (PLATFORM_IP_ENABLE_INT_CTRL == STD_ON)
     #if ((INT_CTRL_IP_CORTEXR == STD_ON) || (INT_CTRL_IP_CORTEXA == STD_ON))

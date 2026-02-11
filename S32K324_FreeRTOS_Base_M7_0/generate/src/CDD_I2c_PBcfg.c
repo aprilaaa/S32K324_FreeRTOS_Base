@@ -139,9 +139,27 @@ extern "C"
 *               Configuration set by calling I2c_Init() API.
 */
 
-static const I2c_HwUnitConfigType I2c_ChannelConfigPB[1] =
+static const I2c_HwUnitConfigType I2c_ChannelConfigPB[2] =
 {
     /* Start of I2c_ChannelConfig[0] */
+    {
+        /* The hardware channel ID. */
+        (I2c_HwUnitType) I2C_LPI2C_0,
+
+        /* The Partition Id */
+        (I2c_PartCoreType) I2C_SPURIOUS_PARTITION_ID,
+
+        /* The master/slave mode of the channel. */
+        (I2c_MasterSlaveModeType) I2C_MASTER_MODE,
+
+        /* The hardware channel type */
+        I2C_LPI2C_CHANNEL,
+        {
+            &I2c_Ipw_ChannelConfig0
+        }
+    }, /* end of I2c_ChannelConfig[0]. */
+
+    /* Start of I2c_ChannelConfig[1] */
     {
         /* The hardware channel ID. */
         (I2c_HwUnitType) I2C_LPI2C_1,
@@ -155,9 +173,9 @@ static const I2c_HwUnitConfigType I2c_ChannelConfigPB[1] =
         /* The hardware channel type */
         I2C_LPI2C_CHANNEL,
         {
-            &I2c_Ipw_ChannelConfig0
+            &I2c_Ipw_ChannelConfig1
         }
-    } /* end of I2c_ChannelConfig[0]. */
+    } /* end of I2c_ChannelConfig[1]. */
 };
 
 /*==================================================================================================

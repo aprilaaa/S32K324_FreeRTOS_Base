@@ -34,8 +34,10 @@
                <pin_label pin_num="73" pin_signal="PTB26" label="KEY1" identifier="KEY1"/>
                <pin_label pin_num="43" pin_signal="PTB19" label="KEY2" identifier="KEY2"/>
                <pin_label pin_num="44" pin_signal="PTB20" label="KEY3" identifier="KEY3"/>
-               <pin_label pin_num="141" pin_signal="PTC6" label="SDA" identifier="SCL;SDA"/>
-               <pin_label pin_num="140" pin_signal="PTC7" label="SCL" identifier="SCL"/>
+               <pin_label pin_num="141" pin_signal="PTC6" label="OLED_SDA_CH1" identifier="SCL;SDA;OLED_SDA;OLED_SDA_CH1"/>
+               <pin_label pin_num="140" pin_signal="PTC7" label="OLED_SCL_CH1" identifier="SCL;OLED_SCL;OLED_SCL_CH1"/>
+               <pin_label pin_num="41" pin_signal="PTD13" label="EEPROM_SDA_CH0" identifier="EEPROM_SDA;EEPROM_SDA_CH0"/>
+               <pin_label pin_num="40" pin_signal="PTD14" label="EEPROM_SCL_CH0" identifier="EEPROM_SCL;EEPROM_SCL_CH0"/>
             </pin_labels>
             <external_user_signals>
                <properties/>
@@ -99,7 +101,7 @@
                   <pin peripheral="CAN0" signal="can0_tx" pin_num="100" pin_signal="PTA7"/>
                   <pin peripheral="LPI2C1" signal="lpi2c1_sda" pin_num="141" pin_signal="PTC6">
                      <pin_features>
-                        <pin_feature name="identifier" value="SDA"/>
+                        <pin_feature name="identifier" value="OLED_SDA_CH1"/>
                         <pin_feature name="direction" value="INPUT/OUTPUT"/>
                         <pin_feature name="pullSelect" value="pullUp"/>
                         <pin_feature name="pullEnable" value="enabled"/>
@@ -107,6 +109,23 @@
                   </pin>
                   <pin peripheral="LPI2C1" signal="lpi2c1_scl" pin_num="140" pin_signal="PTC7">
                      <pin_features>
+                        <pin_feature name="identifier" value="OLED_SCL_CH1"/>
+                        <pin_feature name="direction" value="INPUT/OUTPUT"/>
+                        <pin_feature name="pullSelect" value="pullUp"/>
+                        <pin_feature name="pullEnable" value="enabled"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="LPI2C0" signal="lpi2c0_sda" pin_num="41" pin_signal="PTD13">
+                     <pin_features>
+                        <pin_feature name="identifier" value="EEPROM_SDA_CH0"/>
+                        <pin_feature name="direction" value="INPUT/OUTPUT"/>
+                        <pin_feature name="pullSelect" value="pullUp"/>
+                        <pin_feature name="pullEnable" value="enabled"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="LPI2C0" signal="lpi2c0_scl" pin_num="40" pin_signal="PTD14">
+                     <pin_features>
+                        <pin_feature name="identifier" value="EEPROM_SCL_CH0"/>
                         <pin_feature name="direction" value="INPUT/OUTPUT"/>
                         <pin_feature name="pullSelect" value="pullUp"/>
                         <pin_feature name="pullEnable" value="enabled"/>
@@ -1150,6 +1169,50 @@
                                        <setting name="PortPinSiul2Instance" value="SIUL2_0"/>
                                        <setting name="PortPinId" value="11"/>
                                        <setting name="PortPinPcr" value="71"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="OBEGroupSelect" value="NO_OBE_GROUP"/>
+                                       <setting name="MscrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <setting name="ImcrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <array name="IGFSettings"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="11">
+                                       <setting name="Name" value="PortPin_11"/>
+                                       <setting name="PortPinPue" value="true"/>
+                                       <setting name="PortPinPus" value="true"/>
+                                       <setting name="PortPinSafeMode" value="false"/>
+                                       <setting name="PortPinDse" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinPke" value="false"/>
+                                       <setting name="PortPinIfe" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinInvertControl" value="false"/>
+                                       <setting name="PortPinSiul2Instance" value="SIUL2_0"/>
+                                       <setting name="PortPinId" value="12"/>
+                                       <setting name="PortPinPcr" value="109"/>
+                                       <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
+                                       <setting name="OBEGroupSelect" value="NO_OBE_GROUP"/>
+                                       <setting name="MscrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <setting name="ImcrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
+                                       <array name="IGFSettings"/>
+                                       <array name="PortPinEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="12">
+                                       <setting name="Name" value="PortPin_12"/>
+                                       <setting name="PortPinPue" value="true"/>
+                                       <setting name="PortPinPus" value="true"/>
+                                       <setting name="PortPinSafeMode" value="false"/>
+                                       <setting name="PortPinDse" value="false"/>
+                                       <setting name="PortPinWithReadBack" value="false"/>
+                                       <setting name="PortPinPke" value="false"/>
+                                       <setting name="PortPinIfe" value="false"/>
+                                       <setting name="PortPinDirectionChangeable" value="true"/>
+                                       <setting name="PortPinModeChangeable" value="true"/>
+                                       <setting name="PortPinInvertControl" value="false"/>
+                                       <setting name="PortPinSiul2Instance" value="SIUL2_0"/>
+                                       <setting name="PortPinId" value="13"/>
+                                       <setting name="PortPinPcr" value="110"/>
                                        <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
                                        <setting name="OBEGroupSelect" value="NO_OBE_GROUP"/>
                                        <setting name="MscrPdacSlot" value="VIRTUAL_WRAPPER_PDAC0"/>
@@ -2650,15 +2713,22 @@
                                     <setting name="Name" value="ADC1_IRQ"/>
                                     <setting name="IsrName" value="ADC1_IRQn"/>
                                     <setting name="IsrEnabled" value="true"/>
-                                    <setting name="IsrPriority" value="0"/>
+                                    <setting name="IsrPriority" value="6"/>
                                     <setting name="IsrHandler" value="Adc_Sar_1_Isr"/>
                                  </struct>
                                  <struct name="1">
                                     <setting name="Name" value="LPI2C1_IRQ"/>
                                     <setting name="IsrName" value="LPI2C1_IRQn"/>
                                     <setting name="IsrEnabled" value="true"/>
-                                    <setting name="IsrPriority" value="1"/>
+                                    <setting name="IsrPriority" value="7"/>
                                     <setting name="IsrHandler" value="LPI2C1_Master_Slave_IRQHandler"/>
+                                 </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="LPI2C0_IRQ"/>
+                                    <setting name="IsrName" value="LPI2C0_IRQn"/>
+                                    <setting name="IsrEnabled" value="true"/>
+                                    <setting name="IsrPriority" value="8"/>
+                                    <setting name="IsrHandler" value="LPI2C0_Master_Slave_IRQHandler"/>
                                  </struct>
                               </array>
                               <array name="PlatformNvicEcucPartitionRef"/>
@@ -2923,8 +2993,66 @@
                            <array name="I2cDemEventParameterRefs"/>
                            <array name="I2cChannel">
                               <struct name="0">
-                                 <setting name="Name" value="I2cChannel_1"/>
+                                 <setting name="Name" value="I2cChannel_0"/>
                                  <setting name="I2cChannelId" value="0"/>
+                                 <setting name="I2cHwChannel" value="LPI2C_0"/>
+                                 <setting name="I2cMasterSlaveConfiguration" value="MASTER_MODE"/>
+                                 <setting name="I2cOperatingMode" value="LPI2C_FAST_MODE"/>
+                                 <array name="I2cChannelEcucPartitionRef"/>
+                                 <struct name="I2cMasterConfiguration">
+                                    <setting name="Name" value="I2c_Lpi2cMasterChannel1"/>
+                                    <setting name="I2cPrescaler" value="LPI2C_MASTER_PRESC_DIV_1"/>
+                                    <setting name="I2cDataValidDelay" value="1"/>
+                                    <setting name="I2cSetupHoldDelay" value="2"/>
+                                    <setting name="I2cClockHighPeriod" value="39"/>
+                                    <setting name="I2cClockLowPeriod" value="57"/>
+                                    <setting name="I2cPinLowTimeout" value="20"/>
+                                    <setting name="I2cBusIdleTimeout" value="20"/>
+                                    <setting name="I2cMasterFilterEnable" value="false"/>
+                                    <setting name="I2cGlitchFilterSDA" value="0"/>
+                                    <setting name="I2cGlitchFilterSCL" value="0"/>
+                                    <array name="I2cClockRef">
+                                       <setting name="0" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_I2C"/>
+                                    </array>
+                                    <setting name="I2cAsyncMethod" value="LPI2C_USING_INTERRUPTS"/>
+                                    <array name="I2cDmaTxChannelRef"/>
+                                    <array name="I2cDmaRxChannelRef"/>
+                                    <struct name="I2cHighSpeedModeConfiguration">
+                                       <setting name="Name" value="I2c_Lpi2cMasterHighSpeedMode1"/>
+                                       <setting name="I2cMasterCode" value="0"/>
+                                       <setting name="I2cDataValidDelay" value="1"/>
+                                       <setting name="I2cSetupHoldDelay" value="2"/>
+                                       <setting name="I2cClockHighPeriod" value="1"/>
+                                       <setting name="I2cClockLowPeriod" value="3"/>
+                                    </struct>
+                                 </struct>
+                                 <struct name="I2cSlaveConfiguration">
+                                    <setting name="Name" value="I2c_Lpi2cSlaveChannel1"/>
+                                    <setting name="I2cSlaveAddress" value="0x32"/>
+                                    <setting name="I2cSlaveIs10BitAddress" value="false"/>
+                                    <setting name="Lpi2cSlaveListening" value="false"/>
+                                    <setting name="I2cSlaveFilterEnable" value="false"/>
+                                    <setting name="I2cGlitchFilterSDA" value="0"/>
+                                    <setting name="I2cGlitchFilterSCL" value="0"/>
+                                    <setting name="I2cAsyncMethod" value="LPI2C_USING_INTERRUPTS"/>
+                                    <array name="I2cSlaveDmaTxChannelRef"/>
+                                    <array name="I2cSlaveDmaRxChannelRef"/>
+                                 </struct>
+                                 <struct name="I2cFlexIOConfiguration">
+                                    <setting name="Name" value="I2c_FlexIOChannel1"/>
+                                    <setting name="I2cAsyncMethod" value="FLEXIO_I2C_USING_INTERRUPTS"/>
+                                    <setting name="I2cDmaTxChannelRef" value=""/>
+                                    <setting name="I2cDmaRxChannelRef" value=""/>
+                                    <setting name="SclFlexioRef" value=""/>
+                                    <setting name="SdaFlexioRef" value=""/>
+                                    <setting name="FlexIO_clock" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePoint_0"/>
+                                    <setting name="I2cFlexIOCompareValue" value="0"/>
+                                    <setting name="I2cFlexIOChannelPrescaler" value="DIV_1"/>
+                                 </struct>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="I2cChannel_1"/>
+                                 <setting name="I2cChannelId" value="1"/>
                                  <setting name="I2cHwChannel" value="LPI2C_1"/>
                                  <setting name="I2cMasterSlaveConfiguration" value="MASTER_MODE"/>
                                  <setting name="I2cOperatingMode" value="LPI2C_FAST_MODE"/>

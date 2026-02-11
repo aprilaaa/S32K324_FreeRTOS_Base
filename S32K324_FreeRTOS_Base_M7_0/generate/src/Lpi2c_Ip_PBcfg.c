@@ -163,6 +163,56 @@ const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel0 =
 };
 
 
+static const Lpi2c_Ip_BaudRateType baudrateParams1 =
+{
+    LPI2C_MASTER_PRESC_DIV_1, /* Prescaler */
+    39U,  /* Clock HI period */
+    57U,  /* Clock LO period */
+    2U, /* Setup Delay */
+    1U,  /* Data Valid */
+#if ( STD_ON == LPI2C_IP_FEATURE_CTRL_HS_MODE_AVAILABLE )
+    1U, /* Clock High HS */
+    3U, /* Clock Low HS*/
+    2U, /* Setup Delay HS */
+    1U /* Data Valid HS */
+#endif
+};
+
+const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel1 =
+{
+    /* Slave address */
+    0U,
+    /*10-bit address */
+    (boolean)FALSE,
+    /* Operating Mode */
+    LPI2C_FAST_MODE,
+    /* Baudrate parameters */
+    &baudrateParams1,
+    /* Pin Low Timeout */
+    20U,
+    /* Bus Idle Timeout */
+    20U,
+    /* Glitch Filter SDA */
+    0U,
+    /* Glitch Filter SDA */
+    0U,
+    /* Master code */
+    0U,
+    /* Transfer Type */
+    LPI2C_USING_INTERRUPTS,
+    /* Dma Tx channel */
+    0U,
+    /* Dma Rx channel */
+    0U,
+    /* Master Callback */
+    NULL_PTR,
+    /* I2c Master Callback Parameter */
+    1U,
+    /*  Master State index */
+    1U
+};
+
+
 
 
 #define I2C_STOP_SEC_CONFIG_DATA_UNSPECIFIED

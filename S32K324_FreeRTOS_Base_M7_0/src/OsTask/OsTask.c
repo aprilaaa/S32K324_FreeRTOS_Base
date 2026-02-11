@@ -65,20 +65,18 @@ void vTask10ms(void *pvParameters)
     TickType_t xLastWakeTime = xTaskGetTickCount();
     for(;;)
     {
-    	vTask10ms_cnt++;
-    	Can_43_FLEXCAN_MainFunction_Write();
-    	Can_43_FLEXCAN_MainFunction_Read();
+		vTask10ms_cnt++;
+		Can_43_FLEXCAN_MainFunction_Write();
+		Can_43_FLEXCAN_MainFunction_Read();
 
-    	 if(Dio_ReadChannel(DioConf_DioChannel_DioChannel_KEY2) == 1)
-    	 {
-    	 	Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDG);
-    	 }
-    	 else
-    	 {
-    	 	Dio_WriteChannel(DioConf_DioChannel_DioChannel_LEDG, STD_HIGH);
-    	 }
-
-
+		if(Dio_ReadChannel(DioConf_DioChannel_DioChannel_KEY2) == 1)
+		{
+			Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDG);
+		}
+		else
+		{
+			Dio_WriteChannel(DioConf_DioChannel_DioChannel_LEDG, STD_HIGH);
+		}
 
         vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10));
     }
@@ -91,31 +89,31 @@ void vTask100ms(void *pvParameters)
     TickType_t xLastWakeTime = xTaskGetTickCount();
     for(;;)
     {
-    	vTask100ms_cnt++;
-    	 if(Dio_ReadChannel(DioConf_DioChannel_DioChannel_KEY3) == 1)
-    	 {
-    	 	Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDR);
-    	 	Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDG);
-    	 }
+		vTask100ms_cnt++;
+		if(Dio_ReadChannel(DioConf_DioChannel_DioChannel_KEY3) == 1)
+		{
+			Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDR);
+			Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDG);
+		}
 
-     	/* Can Test */
-        static Can_PduType Can_PduInfo;
-        static uint32 CanTx_cnt = 0;
-        extern uint32 CanRx_cnt;
-        Can_PduInfo = Can_CreatePduInfo(0U, 0U, 8U, Can_au8Sdu8bytes);
-     	if(E_OK == Can_43_FLEXCAN_Write(Can_43_FLEXCANConf_CanHardwareObject_CAN00_MailBox1_TX, &Can_PduInfo))
-     	{
-     		CanTx_cnt++;
-     	}
+		/* Can Test */
+		static Can_PduType Can_PduInfo;
+		static uint32 CanTx_cnt = 0;
+		extern uint32 CanRx_cnt;
+		Can_PduInfo = Can_CreatePduInfo(0U, 0U, 8U, Can_au8Sdu8bytes);
+		if(E_OK == Can_43_FLEXCAN_Write(Can_43_FLEXCANConf_CanHardwareObject_CAN00_MailBox1_TX, &Can_PduInfo))
+		{
+			CanTx_cnt++;
+		}
 
 
-     	/* ADC Test */
-     	Adc_StartGroupConversion(AdcGroupSoftwareOneShot);
-        while (VarNotification_0 == 0u){}
+		/* ADC Test */
+		Adc_StartGroupConversion(AdcGroupSoftwareOneShot);
+		while (VarNotification_0 == 0u){}
 		VarNotification_0 = 0;
-     	Adc_ReadGroup(AdcGroupSoftwareOneShot, &AdcReadGroupResult);
+		Adc_ReadGroup(AdcGroupSoftwareOneShot, &AdcReadGroupResult);
 
-     	/* OLED Test */
+		/* OLED Test */
 		char buf[20];
 		sprintf(buf, "CNT_S:%u", (unsigned int)vTask1000ms_cnt);
 		dev_ssd1306_show_string(16, 0, 0, (uint8 *)buf);
@@ -123,30 +121,43 @@ void vTask100ms(void *pvParameters)
 		sprintf(buf, "ADC_V:%-5u", (unsigned int)AdcReadGroupResult);
 		dev_ssd1306_show_string(16, 0, 2, (uint8 *)buf);
 
-		sprintf(buf, "CANRX:%u", (unsigned int)CanRx_cnt);
-		dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
+		// sprintf(buf, "CANRX:%u", (unsigned int)CanRx_cnt);
+		// dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
 
-		sprintf(buf, "CANTX:%u", (unsigned int)CanTx_cnt);
-		dev_ssd1306_show_string(16, 0, 6, (uint8 *)buf);
+		// sprintf(buf, "CANTX:%u", (unsigned int)CanTx_cnt);
+		// dev_ssd1306_show_string(16, 0, 6, (uint8 *)buf);
 
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
+		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
     }
 }
 
 
 
-
+Std_ReturnType dev_eeprom_write_byte_ret;
+Std_ReturnType dev_eeprom_read_byte_ret;
 /* --- 1000ms task --- */
 void vTask1000ms(void *pvParameters)
 {
 	(void)pvParameters;
-    TickType_t xLastWakeTime = xTaskGetTickCount();
+	TickType_t xLastWakeTime = xTaskGetTickCount();
     for(;;)
     {
-    	vTask1000ms_cnt++;
+		vTask1000ms_cnt++;
 
 		Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDB);
 
-        vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
+		// 测试：写入当前的发送计数值到地址 0x0010
+		dev_eeprom_write_byte_ret = dev_eeprom_write_byte(0x0010, (uint8)vTask1000ms_cnt);
+
+		uint8 test_val = 0;
+		// 读取回来
+		dev_eeprom_read_byte_ret = dev_eeprom_read_byte(0x0010, &test_val);
+
+		// 在 OLED 上显示读取到的值
+		char buf[20];
+		sprintf(buf, "EE_RD:%d", test_val);
+		dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
+
+		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
     }
 }

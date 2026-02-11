@@ -16,7 +16,8 @@
 #include "CanIf.h"
 #include "Platform.h"
 #include "SchM_Can_43_FLEXCAN.h"
-#include "dev_ssd1306.h"
+#include "OledDev_Ssd1306.h"
+#include "E2Dev_M24c64.h"
 #include <stdio.h>
 
 #define PRIO_1MS    ( tskIDLE_PRIORITY + 5 )

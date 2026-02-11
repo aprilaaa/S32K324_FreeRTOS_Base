@@ -99,14 +99,22 @@ extern "C"
 *                                      GLOBAL CONSTANTS
 ==================================================================================================*/
 
-#define LPI2C_IP_NUM_MASTER_INSTANCES_USED 1U
+#define LPI2C_IP_NUM_MASTER_INSTANCES_USED 2U
 #define LPI2C_IP_NUM_SLAVE_INSTANCES_USED  0U
 
 #define I2C_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "I2c_MemMap.h"
 
-/* Channel configuration for channel LPI2C_1 - configured as master */
+/* Channel configuration for channel LPI2C_0 - configured as master */
 extern const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel0;
+
+#define I2C_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "I2c_MemMap.h"
+#define I2C_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "I2c_MemMap.h"
+
+/* Channel configuration for channel LPI2C_1 - configured as master */
+extern const Lpi2c_Ip_MasterConfigType I2c_Lpi2cMasterChannel1;
 
 #define I2C_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "I2c_MemMap.h"
