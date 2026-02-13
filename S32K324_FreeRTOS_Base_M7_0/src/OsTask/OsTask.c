@@ -121,11 +121,11 @@ void vTask100ms(void *pvParameters)
 		sprintf(buf, "ADC_V:%-5u", (unsigned int)AdcReadGroupResult);
 		dev_ssd1306_show_string(16, 0, 2, (uint8 *)buf);
 
-		// sprintf(buf, "CANRX:%u", (unsigned int)CanRx_cnt);
-		// dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
+		sprintf(buf, "CANRX:%u", (unsigned int)CanRx_cnt);
+		dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf);
 
-		// sprintf(buf, "CANTX:%u", (unsigned int)CanTx_cnt);
-		// dev_ssd1306_show_string(16, 0, 6, (uint8 *)buf);
+		sprintf(buf, "CANTX:%u", (unsigned int)CanTx_cnt);
+		dev_ssd1306_show_string(16, 0, 6, (uint8 *)buf);
 
 		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
     }
@@ -133,9 +133,6 @@ void vTask100ms(void *pvParameters)
 
 
 
-Std_ReturnType dev_eeprom_write_byte_ret;
-Std_ReturnType dev_eeprom_read_byte_ret;
-uint8 test_val = 0;
 /* --- 1000ms task --- */
 void vTask1000ms(void *pvParameters)
 {
@@ -144,38 +141,7 @@ void vTask1000ms(void *pvParameters)
     for(;;)
     {
 		vTask1000ms_cnt++;
-
 		Dio_FlipChannel(DioConf_DioChannel_DioChannel_LEDB);
-
-
-
-
-		// write byte test
-		// dev_eeprom_write_byte_ret = dev_eeprom_write_byte(0x0000, (uint8)vTask1000ms_cnt);
-		// read byte test
-		// dev_eeprom_read_byte_ret = dev_eeprom_read_byte(0x0000, &test_val);
-
-		// write page test
-		uint8 buf[4];
-		buf[0] = (vTask1000ms_cnt >> 24) & 0xFF;
-		buf[1] = (vTask1000ms_cnt >> 16) & 0xFF;
-		buf[2] = (vTask1000ms_cnt >> 8)  & 0xFF;
-		buf[3] = (vTask1000ms_cnt >> 0)  & 0xFF;
-		dev_eeprom_write_page(0x0000, buf, 4);
-
-		// read page test
-		uint8 rbuf[4];
-		uint32 counter_read;
-		dev_eeprom_read_multi(0x0000, rbuf, 4);
-		counter_read = ((uint32)rbuf[0] << 24) |
-					((uint32)rbuf[1] << 16) |
-					((uint32)rbuf[2] << 8)  |
-					((uint32)rbuf[3]);
-					
-		// 在 OLED 上显示读取到的值
-		char buf1[20];
-		sprintf(buf1, "EE_RD:%d", counter_read);
-		dev_ssd1306_show_string(16, 0, 4, (uint8 *)buf1);
 
 		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
     }

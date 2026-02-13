@@ -126,3 +126,32 @@ Std_ReturnType dev_eeprom_read_multi(uint16 mem_addr, uint8 *pBuf, uint32 len)
     
     return I2c_SyncTransmit(I2C_CHANNEL_EEPROM, &req);
 }
+
+/* 1000ms tsak EEPROM Routine */
+void dev_eeprom_1000ms_test(uint32 vTask1000ms_cnt)
+{
+        (void)vTask1000ms_cnt;
+    	/* V1.0 EEPROM write/read byte test */
+		// uint8 test_val = 0;
+		// dev_eeprom_write_byte(0x0000, (uint8)vTask1000ms_cnt);
+		// dev_eeprom_read_byte(0x0000, &test_val);
+		/* V1.0 EEPROM end */
+
+		/* V2.0 EEPROM write/read page test */
+		// uint8 buf[4];
+		// buf[0] = (vTask1000ms_cnt >> 24) & 0xFF;
+		// buf[1] = (vTask1000ms_cnt >> 16) & 0xFF;
+		// buf[2] = (vTask1000ms_cnt >> 8)  & 0xFF;
+		// buf[3] = (vTask1000ms_cnt >> 0)  & 0xFF;
+		// dev_eeprom_write_page(0x0000, buf, 4);
+
+		// // read page test
+		// uint8 rbuf[4];
+		// uint32 counter_read;
+		// dev_eeprom_read_multi(0x0000, rbuf, 4);
+		// counter_read = ((uint32)rbuf[0] << 24) |
+		// 			((uint32)rbuf[1] << 16) |
+		// 			((uint32)rbuf[2] << 8)  |
+		// 			((uint32)rbuf[3]);
+		/* V2.0 EEPROM end */
+}

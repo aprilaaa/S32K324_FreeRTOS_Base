@@ -21,5 +21,6 @@ Std_ReturnType dev_eeprom_write_byte(uint16 mem_addr, uint8 data);
 Std_ReturnType dev_eeprom_write_page(uint16 mem_addr, uint8 *pData, uint8 len);
 Std_ReturnType dev_eeprom_read_byte(uint16 mem_addr, uint8 *pData);
 Std_ReturnType dev_eeprom_read_multi(uint16 mem_addr, uint8 *pBuf, uint32 len);
+void dev_eeprom_1000ms_test(uint32 vTask1000ms_cnt);
 
 #endif /* E2DEV_M24C64_H_ */
