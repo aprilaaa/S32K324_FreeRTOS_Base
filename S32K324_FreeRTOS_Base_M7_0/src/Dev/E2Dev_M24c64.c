@@ -7,8 +7,8 @@
 
 #include "E2Dev_M24c64.h"
 
-#define EEPROM_DEV_ADDR			0x50  // 7位地址 0x50, 左移后为 0xA0
-#define EEPROM_PAGE_SIZE3		2
+#define EEPROM_DEV_ADDR			0x50
+#define EEPROM_PAGE_SIZE		32
 #define I2C_CHANNEL_EEPROM		0
 
 /* 封装 I2C 发送逻辑 */
@@ -35,9 +35,9 @@ Std_ReturnType dev_eeprom_write_byte(uint16 mem_addr, uint8 data)
     buf[2] = data;
 
     Std_ReturnType ret = bsp_eeprom_i2c_send(buf, 3);
-    
-    // 关键：写完必须延时，否则连续写入会失败
-    vTaskDelay(pdMS_TO_TICKS(5)); 
+
+    // 只要有写动作，必须延时 5ms
+    vTaskDelay(pdMS_TO_TICKS(5));
     return ret;
 }
 
@@ -75,7 +75,7 @@ Std_ReturnType dev_eeprom_read_byte(uint16 mem_addr, uint8 *pData)
     addr_buf[1] = (uint8)(mem_addr & 0xFF);
 
     // 1. 发送地址 (Dummy Write)
-    req.SlaveAddress         = (EEPROM_DEV_ADDR >> 1);
+    req.SlaveAddress         = (EEPROM_DEV_ADDR);
     req.BitsSlaveAddressSize = FALSE;
     req.ExpectNack           = FALSE;
     req.RepeatedStart        = TRUE;  // 关键：开启重复起始位
@@ -109,7 +109,7 @@ Std_ReturnType dev_eeprom_read_multi(uint16 mem_addr, uint8 *pBuf, uint32 len)
     addr_buf[1] = (uint8)(mem_addr & 0xFF);
 
     // 1. 发送伪写（Dummy Write）：告知 EEPROM 我要从哪个地址开始读
-    req.SlaveAddress         = (EEPROM_DEV_ADDR >> 1);
+    req.SlaveAddress         = (EEPROM_DEV_ADDR);
     req.BitsSlaveAddressSize = FALSE;
     req.ExpectNack           = FALSE;
     req.RepeatedStart        = TRUE;  // 必须使用重复起始位，不释放总线

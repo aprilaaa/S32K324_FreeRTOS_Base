@@ -522,6 +522,11 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="Tool" resourceId="Clocks" description="外围设备工具需要 Clocks 工具，但它已被禁用。" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data>true</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/Siul2_Port_Ip_Cfg.c" update_enabled="true"/>
@@ -2997,15 +3002,15 @@
                                  <setting name="I2cChannelId" value="0"/>
                                  <setting name="I2cHwChannel" value="LPI2C_0"/>
                                  <setting name="I2cMasterSlaveConfiguration" value="MASTER_MODE"/>
-                                 <setting name="I2cOperatingMode" value="LPI2C_FAST_MODE"/>
+                                 <setting name="I2cOperatingMode" value="LPI2C_STANDARD_MODE"/>
                                  <array name="I2cChannelEcucPartitionRef"/>
                                  <struct name="I2cMasterConfiguration">
                                     <setting name="Name" value="I2c_Lpi2cMasterChannel1"/>
-                                    <setting name="I2cPrescaler" value="LPI2C_MASTER_PRESC_DIV_1"/>
+                                    <setting name="I2cPrescaler" value="LPI2C_MASTER_PRESC_DIV_4"/>
                                     <setting name="I2cDataValidDelay" value="1"/>
                                     <setting name="I2cSetupHoldDelay" value="2"/>
-                                    <setting name="I2cClockHighPeriod" value="39"/>
-                                    <setting name="I2cClockLowPeriod" value="57"/>
+                                    <setting name="I2cClockHighPeriod" value="40"/>
+                                    <setting name="I2cClockLowPeriod" value="58"/>
                                     <setting name="I2cPinLowTimeout" value="20"/>
                                     <setting name="I2cBusIdleTimeout" value="20"/>
                                     <setting name="I2cMasterFilterEnable" value="false"/>
