@@ -1329,7 +1329,7 @@
                            <setting name="McuSscmGetStatusApi" value="false"/>
                            <setting name="McuSscmGetUoptApi" value="false"/>
                            <setting name="McuGetMidrStructureApi" value="false"/>
-                           <setting name="McuDisableCmuApi" value="true"/>
+                           <setting name="McuDisableCmuApi" value="false"/>
                            <setting name="McuEmiosConfigureGprenApi" value="false"/>
                            <setting name="McuGetClockFrequencyApi" value="false"/>
                         </struct>

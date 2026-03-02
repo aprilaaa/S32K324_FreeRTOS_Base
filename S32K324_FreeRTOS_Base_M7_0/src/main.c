@@ -65,8 +65,18 @@ int main(void)
 		Mcu_Init(&Mcu_Config);
 	#endif /* (MCU_PRECOMPILE_SUPPORT == STD_ON) */
 
+
     /* Initialize the clock tree and apply PLL as system clock */
     Mcu_InitClock(McuClockSettingConfig_0);
+
+    /* Wait until PLL is locked */
+    while (MCU_PLL_LOCKED != Mcu_GetPllStatus())
+    {
+        /* Busy wait until PLL is locked */
+    }
+
+    /* Distribute PLL clock to system (switch MUX_0 from FIRC to PLL) */
+    Mcu_DistributePllClock();
 
     /* Apply a mode configuration */
     Mcu_SetMode(McuModeSettingConf_0);

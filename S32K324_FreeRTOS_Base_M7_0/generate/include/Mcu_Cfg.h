@@ -353,7 +353,7 @@ extern "C"{
 /**
 * @brief            Enable the usage of Non-Autosar API  Mcu_Disable_CMU().
 */
-#define MCU_DISABLE_CMU_API     (STD_ON)
+#define MCU_DISABLE_CMU_API     (STD_OFF)
 /**
 * @brief            Enable the usage of Non-Autosar API  Mcu_GetClockFrequency().
 */

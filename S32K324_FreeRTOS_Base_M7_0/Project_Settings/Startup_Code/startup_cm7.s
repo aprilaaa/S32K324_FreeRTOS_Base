@@ -76,7 +76,7 @@
 #define CM7_3_ENABLE_SHIFT          (8)
 
 #define CM7_0_ENABLE                (1)
-
+#undef CM7_1_ENABLE
 #ifndef CM7_1_ENABLE
     #define CM7_1_ENABLE            (0)
 #endif
