@@ -17,7 +17,7 @@ extern Adc_ValueGroupType AdcReadGroupResult;
 
 uint8 Can_au8Sdu8bytes[8U] = {0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x06U, 0x07U, 0x08};
 
-/* 定义要发送给 SSD1306 的数据（例如初始化序列或清屏命令） */
+/* Send data to SSD1306  */
 uint8 ssd1306_cmd_buffer[] = {0x00, 0xAF}; // 0x00: 控制字节(命令), 0xAF: 开启显示命令
 
 
